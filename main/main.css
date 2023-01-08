@@ -4,7 +4,7 @@
   --almostBlack:      rgb( 30,  30,  30);
   --almostWhite:      rgb(250, 250, 250);
   --green:            rgb( 27, 133,   0);
-
+  --lightGreen:       rgb(100, 167,  70);
   --fontColor:        var(--green);
 
   --buttonBgColor:      var(--green);
@@ -33,6 +33,7 @@ html {
 body {
   animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
   background: white;
+  background: var(--lightGreen);
   color: var(--fontColor);
   display: flex;
   flex-direction: column;
@@ -89,45 +90,61 @@ body {
 }
 
 .logoImage {
-  height: 2rem;
+  height: 3rem;
 }
 
 .logoText {
+  color: var(--green);
+  font-family: notoSansExtraLight, arial;
   font-family: frederickaTheGreat, notoSansExtraLight, arial;
-  font-size: 5rem;
+  font-size: 4rem;
   margin-top: -2rem;
 }
 
 .logoVersion {
   align-self: flex-end;
+  color: var(--green);
   font-family: notosansLight, arial;
   font-size: 1rem;
   margin-left: 0.5rem;
 }
 
 .mainContainer {
-  padding: 0rem 2rem 2rem 2rem;
+  padding: 2rem 2rem 2rem 2rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 10rem 1fr 1fr;
   grid-template-rows: 1fr 2fr;
-  gap: 1rem;
-  height: calc(100% - 10rem);
+  gap: 2rem;
+  height: 100%;
 }
 
-.mainLeft {
+.instructions {
   animation: rotateDownAnim 1s ease-in-out 1s forwards;
-  background: rgb(40, 85, 20);
+  background: white;
   border-radius: 10px;
   border: solid 1px var(--green);
-  box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
-  color: white;
-  flex-grow: 0;
+  // box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
+  color: var(--green);
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
   padding: 2rem;
   transform: rotate(-3deg);
 }
 
-.mainRight {
-  flex-grow: 1;
+.instructions2 {
+  background: white;
+  border-radius: 10px;
+  border: solid 1px var(--green);
+  // box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
+  color: black;
+  color: var(--green);
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 2rem;
 }
 
 .description {
@@ -136,13 +153,36 @@ body {
   margin-top: 2rem;
 }
 
-.mainLeftX,
 .controls,
 .resultsZone,
 .dropZone {
+  background: white;
   border-radius: 10px;
   border: solid 1px var(--green);
+  // box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
   padding: 1rem;
+}
+
+.controls {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.dropZone {
+  box-shadow: inset 5px 5px 5px rgba(100, 100, 100, 0.5);
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.resultsZone {
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 .footer {
