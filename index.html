@@ -10,6 +10,9 @@
   <link rel=apple-touch-icon href="./assets/images/logo/logo256.png">
   <link rel=icon href="./assets/images/logo/logo256.png">
 
+  <link rel="stylesheet" href="./assets/fonts/ftg/ftg.css">
+  <link rel="stylesheet" href="./assets/fonts/notoSans/notoSans.css">
+
   <link rel="stylesheet" href="./clientComponents/css/reset.css">
   <link rel="stylesheet" href="./clientComponents/css/base.css">
   <link rel="stylesheet" href="./clientComponents/css/anim.css">
@@ -20,22 +23,42 @@
 </head>
 <body>
   <div class=header>
-    <div class=date></div>
-  </div>
-  <div class=mainSection>
-    <div class=logoContainer>
-      <div class=logo>
-        <img src='./assets/images/logo/logo256.png'/>
-        FixTranscript
-      </div>
-      <div class=logoQuote>
-        All worthwhile people have good thoughts,
-        good ideas and good intentions --
-        but precious few of them ever translate those into action.
-        -- John Hancock Field
-      </div>
+    <div class=headerLeft>
+      <img class=logoImage src='./assets/images/logo/logo256.png'/>
     </div>
-  </div>  <!-- mainSection -->
-  <div class=footer></div>
+    <div class=headerMiddle>
+      <div class=quote></div>
+    </div>
+    <div class=headerRight>
+      <div class=date>the date</div>
+    </div>
+  </div>
+
+  <div class=mainContainer>
+    <div class=mainLeft>
+      <div class=logoContainer>
+        <div class=logoText>FixTranscript</div>
+        <div class=logoVersion>(v1.0.0)</div>
+      </div>
+
+      <div class=description>
+        This application helps fix transcripts.
+        <ol>
+          <li>
+            go to the YouTube video and copy the transcription
+            <a href="">(here's how)</a>
+          </li>
+          <li>paste the transcription text into the box below</li>
+          <li>set the formatting options and press the Go! button</li>
+          <li>compare the results</li>
+          <li>press the copy button</li>
+          <li>paste the results (ctl-v) into wherever you need them</li>
+        </ul>
+      </div> <!-- description -->
+    </div> <!-- mainLeft -->
+    <div class=controls>controls</div>
+    <div class=dropZone>dropZone</div>
+    <div class=resultsZone>resultsZone</div>
+  </div>  <!-- mainContainer -->
 </body>
 </html>

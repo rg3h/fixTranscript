@@ -8,3 +8,8 @@
     0% { opacity: 1; }
   100% { opacity: 0; }
 }
+
+@keyframes rotateDownAnim {
+    0% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}

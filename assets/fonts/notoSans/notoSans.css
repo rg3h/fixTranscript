@@ -1,0 +1,43 @@
+/* notoSans.css */
+
+@font-face {
+  font-family: 'notoSansExtraBold';
+  font-style: normal;
+  font-weight: 800;
+  src: url('./NotoSans-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: 'notoSansBold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./NotoSans-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'notoSansMedium';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./NotoSans-Medium.ttf');
+}
+
+@font-face {
+  font-family: 'notoSans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./NotoSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'notoSansLight';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./NotoSans-Light.ttf');
+}
+
+@font-face {
+  font-family: 'notoSansExtraLight';
+  font-style: normal;
+  font-weight: 200;
+  src: url('./NotoSans-ExtraLight.ttf');
+}
