@@ -1,0 +1,324 @@
+these four AI tools will make you 10
+times more productive and I guarantee
+you everyone watching this video right
+now will be using at least one of these
+tools by the end of this video in my
+last video I talked about the different
+businesses that you could start using
+open ai's gpt3 API which I think is one
+of the biggest opportunities Our
+Generation has right now but I have news
+for you my friends the idea that's
+actually the easy part execution is
+where things get hard and if you want to
+execute on your idea as quickly as
+possible it's probably wise to optimize
+your productivity with the help of
+artificial intelligence as well these
+four tools have saved me so much time in
+creating presentations taking notes
+drafting emails doing research and much
+much more and just to be clear I am not
+associated with any of these tools in
+any way shape or form and I'm not being
+paid to talk about any of these These
+are tools that I just genuinely find
+useful so with that being said if any of
+these tools help you all I ask is that
+you just click like on this video and
+send it to a friend so we can all
+continue to get better together deal
+alright so a big part of my job is
+actually creating presentations and so
+when my friend Gronk wizard actually
+sent me this tool called Tome I got very
+excited so Tome is basically an AI
+powered presentation Builder so whether
+you're making pitch decks business
+proposals school projects whatever fits
+your needs Tome will help you with that
+and the cool thing is they actually use
+gpt3 natively and Dali natively to help
+you generate the text and the images for
+the presentations and yes you heard that
+right this apple actually create your
+entire presentation text images in a
+story-like way all in less than one
+minute it's pretty remarkable and to
+show you I'm not lying I'm actually
+going to make one right now so I am
+actually speaking at my friend Ryan
+pineda's upcoming real estate event in
+Las Vegas on January 11th and I am going
+to speak so I need a presentation to
+speak on I will be speaking on future
+Technologies and how they're going to
+impact the real estate market so let's
+use Tome to create the presentation that
+I'm I'm going to speak about at Ryan's
+event so you just go to Tome you just
+hit create and then at the very bottom
+create a presentation about let's say
+how future Technologies like web3 and AI
+are going to change the real estate
+market in the coming years enter as you
+can see it's creating it live in front
+of us right now so that was less than a
+minute the whole thing was created
+looking at the title page it says real
+estate Revolution how web3 and AI will
+transform the market it gives you a
+quick outline of what each slide will
+cover then we talk about smart contracts
+in the real estate market it describes
+what smart contracts are which is spot
+on and the real estate market is
+actually beginning to benefit from the
+use of smart contracts as they enable
+and secure efficient transactions 100
+true now it's going into AI which I
+actually haven't done a lot of research
+on but apparently artificial
+intelligence is revolutionizing the way
+real estate is bought and sold from
+automated property valuations to
+Predictive Analytics AI driven services
+are helping to make the real estate
+market more efficient secure and
+accessible so as we go through the
+presentation you can see that it covers
+all of the bases at a really high level
+level now I'll definitely go through
+this and make things way more detailed
+and add extra touches but this is a
+really good starting point to build off
+instead of just looking at a blank
+screen having to type in all those
+definitions myself I get a nice image
+and nice text that has a good detailed
+explanations of what topics I'm covering
+especially when I'm talking to a new
+audience so this is something that I
+would use to give me a nice Baseline and
+then I'll build off it to make it my own
+and on top of this Tome is a good
+presentation Builder it has all the
+different tools text image formatting
+input anything you need it's really
+really useful so just simply using this
+as a Baseline and then using tome's
+actual presentation Creator tools it
+saves me so much time when I'm doing
+project proposals for my agency and it's
+free so it's a no-brainer for me and if
+you actually want to see me present this
+presentation live in The Mirage in Vegas
+on the 11th I'll just leave a link with
+a discount code in the description below
+so the next one is one that we all
+probably know and love by now and that's
+going to be chat gbt I've been using
+this to write memos to my employees
+drafting emails and many random other
+ways in my video last week I actually
+talked about how chat GPT could be used
+to write blog posts or articles that can
+help boost you in SEO and a lot of
+people were quick to comment saying that
+Google can actually pick up on AI
+written content and this would actually
+hurt you in their rankings well my
+friends I have a way around that so
+whether it's for SEO School research
+whatever you may be doing I do think you
+should be able to use AI as a tool to
+help you accomplish those and so I'm
+going to show you another AI tool that
+you could pair chat GPT with to get
+around this so quill bot is actually an
+AI based paraphrasing app that you can
+use and it'll basically reword any
+paragraph for you on top of that it can
+even change the tone style and the
+length of the message that you put into
+it and to prove this works there
+actually are AI detectors out there and
+so let's go ahead and have chat gbt make
+a story for us about maybe a YouTuber
+that got caught cheating on his homework
+alright so we got a pretty long story
+here about Jack who got caught his
+teacher actually put it in a detector
+herself so we're gonna put the first two
+paragraphs into quill bot and see what
+it does it's going to reword things here
+it shows you which words that actually
+rephrases we're going to copy this and
+then we're going to put it over here
+into the content written detector
+analyze text and 97 human generated
+content pretty cool right so keep that
+in mind if you're using chat gbt for any
+of those reasons so moving on to the
+next tool as I mentioned earlier I've
+been using chat GPT to help me draft
+emails but this next tool optimizes your
+email using AI so superhuman claims to
+be the fastest email experience ever
+made and I have to say it has
+drastically changed the way that I
+actually use my email so first how AI is
+leveraged is they quickly show you the
+emails that you value the most or most
+important to you based on your behavior
+that way you never miss important emails
+again and on top of this they have a
+undo send feature which I did not even
+know was possible but if you click undo
+send it'll be like the email is never
+sent so if you had a typo you said
+something you shouldn't have you can
+just hit undo send and there you go you
+you've got bailed out and on top of this
+they also have a feature that shows if
+someone read your emails which again I
+didn't know was possible and those are
+just cool features but it actually makes
+the experience of email much faster
+instead of having to know where every
+button is on the Google user interface
+you can just open up a command center
+hit command U and then type in whatever
+you want to do whether you want it to
+remind you to reply to this email two
+days later a lot of times in my life
+I'll get email it's not very time
+sensitive I don't need to talk to this
+person until Wednesday and so this I can
+literally just say command U Remind me
+two days and then in two days right
+there shows up back at the top of my
+inbox like I just received the email
+which is really useful and so what this
+really does is makes it so you can clear
+your inbox every single day instead of
+just looking like at a big wall of
+intimidating emails you can put them in
+different sections ones that you're
+working on now ones that have been sent
+ones that have been deleted and it's
+just a really good way to organize your
+email and cumulatively it probably saves
+me about an hour every single week which
+is pretty drastic so in my opinion it's
+definitely worth the 10 minutes that it
+took to set up and take the tutorial to
+learn how to use it but that's just me
+check it out if it sounds like something
+cool to you all right then moving on to
+the last tool which I have been using
+for years is actually notion and this is
+a note taking app spreadsheet building
+up it's basically like the Google Suite
+like Google Docs Google spreadsheets but
+way more advanced and a much better user
+interface so notion actually announced
+that their AI features are coming soon
+there's currently a wait list so this
+isn't out yet but in general if you
+haven't used notion check it out it's
+going to save you a lot of time and
+there's a lot of cool features that will
+make your life better but notion can be
+used to take notes build spreadsheets
+manage teams much much more it's really
+cool because you can actually like layer
+your note taking basically if you took
+notes two weeks ago now you're taking
+notes today you can literally like
+hyperlink text back to your previous
+notes if you need to reference it for
+your team so as Mark said in
+presentation two weeks ago click here
+they'll read the two weeks ago's notes
+and and then you're going to compile
+more notes underneath that but all it is
+is a hyperlink so you don't need to like
+completely make a whole dock explaining
+last year's so it gets really powerful
+because it's a lot like a computer's
+folder system where you can create a
+folder put files in there put another
+folder put files in there and so it
+compiles information very concisely and
+is a very good way to communicate across
+your team so that alone is very powerful
+but notion recently announced that they
+are adding AI as a new feature so their
+tagline is Leverage The Limitless power
+of AI in any notion page write faster
+think bigger then augment your
+creativity like magic so it basically
+brings the power of chat GPT but puts it
+natively in the notion dashboard which
+is going to change the game so now let's
+say you're making a document and you
+need to make a list of four recipes you
+can simply ask notion hey give me a list
+of four different recipes that we could
+cook for dinner and the response you get
+is exactly the response that you would
+get if you input that into chat gbt but
+now it's directly in your note taking
+platform which will save a ton of time
+so the long long two weeks of copying
+and pasting your chat GPT onto your
+note-taking app is gone so this is going
+to streamline my workflow so so much so
+on top of like prompting different
+creative ideas kind of like the example
+of the presentations that I shared
+earlier it's going to summarize my notes
+for me if I want to compile them it's
+going to have automatic spell check in
+grammar check and on top of that it'll
+actually translate any language live
+right in your notes just simply ask it
+to so this one's not actually released
+yet this is currently on a waitlist so
+if you want to get access before most
+people I highly recommend joining the
+waitlist because this is probably going
+to be a big game changer and will make
+you a lot more productive it's a lot
+like github's co-pilot but for everyday
+people not just coders if any of you
+know what that means oh and I almost
+forgot to mention my developer friend
+actually found a way to use chat gbt but
+with your Siri on your iPhone and so you
+can literally have like an AI powered
+voice assistant on your iPhone and it's
+pretty cool because you get the power of
+chat GPT like anywhere you go at your
+fingertips so if you want to learn how
+to do that it's kind of a technical
+setup it takes like five to ten minutes
+but I'll actually just have him make a
+tutorial video and if you just put your
+email in the link below we'll send it to
+you for free so if you have any
+questions for me about AI businesses or
+my developers on that process we
+actually have an AI Discord server
+that's completely free I'll leave the
+link in the description below as well
+but that's gonna do it for today's video
+guys if you enjoyed the content and you
+want more AI videos on how it can
+improve your everyday life I have a lot
+more videos like this coming so just hit
+the Subscribe button so you don't miss a
+video but other than that guys I hope
+you have a wonderful day and I will see
+you in the next one
