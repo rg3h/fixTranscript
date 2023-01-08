@@ -5,7 +5,6 @@
   --almostWhite:      rgb(250, 250, 250);
   --green:            rgb( 27, 133,   0);
   --lightGreen:       rgb(100, 167,  70);
-  --fontColor:        var(--green);
 
   --buttonBgColor:      var(--green);
   --buttonFgColor:      var(--almostWhite);
@@ -32,28 +31,32 @@ html {
 
 body {
   animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
-  background: white;
   background: var(--lightGreen);
-  color: var(--fontColor);
-  display: flex;
-  flex-direction: column;
+  color: white;
+  display: grid;
   font-family: notoSans, arial;
+  gap: 2rem;
+  grid-template-columns: 10rem 1fr 1fr;
+//  grid-template-rows: auto;
+  grid-auto-rows: max-content; /* OR min-content*/
   height: 100%;
-  justify-content: flex-start;
   margin: 0;
   opacity: 0;
-  padding: 0;
+  padding: 1rem 2rem 2rem 2rem;
   width: 100%;
 }
 
-.header {
-  align-items: center;
+.headerContainer {
+  align-items: flex-start;
   display: flex;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
   flex-direction: row;
   flex-grow: 0;
   gap: 1rem;
   justify-content: space-between;
-  padding: 2rem;
   width: 100%;
 }
 
@@ -62,15 +65,16 @@ body {
   display: flex;
   flex-grow: 0;
   justify-content: flex-start;
-  min-width: 25rem;
 }
 
 .headerMiddle {
   align-items: center;
-  display: flex;
   flex-grow: 1;
+  font-family: notoSansLight, arial;
+  font-size: 2rem;
   gap: 0.5rem;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .headerRight {
@@ -80,77 +84,25 @@ body {
   min-width: 25rem;
 }
 
-.date {
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-}
-
-.logoContainer {
-  display: flex;
-}
-
 .logoImage {
-  height: 3rem;
+  border-radius: 50%;
+  box-shadow: 5px 5px 5px rgba(27, 133, 0, 0.5);
+  height: 5rem;
+  padding: 0.75rem;
 }
 
 .logoText {
-  color: var(--green);
   font-family: notoSansExtraLight, arial;
   font-family: frederickaTheGreat, notoSansExtraLight, arial;
   font-size: 4rem;
-  margin-top: -2rem;
+  margin-left: 1rem;
+  margin-top: -0.1rem;
 }
 
 .logoVersion {
-  align-self: flex-end;
-  color: var(--green);
+  align-self: end;
   font-family: notosansLight, arial;
   font-size: 1rem;
-  margin-left: 0.5rem;
-}
-
-.mainContainer {
-  padding: 2rem 2rem 2rem 2rem;
-  display: grid;
-  grid-template-columns: 10rem 1fr 1fr;
-  grid-template-rows: 1fr 2fr;
-  gap: 2rem;
-  height: 100%;
-}
-
-.instructions {
-  animation: rotateDownAnim 1s ease-in-out 1s forwards;
-  background: white;
-  border-radius: 10px;
-  border: solid 1px var(--green);
-  // box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
-  color: var(--green);
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  padding: 2rem;
-  transform: rotate(-3deg);
-}
-
-.instructions2 {
-  background: white;
-  border-radius: 10px;
-  border: solid 1px var(--green);
-  // box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
-  color: black;
-  color: var(--green);
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  padding: 2rem;
-}
-
-.description {
-  font-family: notoSansLight, arial;
-  font-size: 2rem;
-  margin-top: 2rem;
 }
 
 .controls,
@@ -159,8 +111,9 @@ body {
   background: white;
   border-radius: 10px;
   border: solid 1px var(--green);
-  // box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.5);
+  color: black;
   padding: 1rem;
+  min-height: 100%;
 }
 
 .controls {

@@ -22,32 +22,26 @@
   <script type="module" src="main/main.js"></script>
 </head>
 <body>
-  <div class=mainContainer>
-    <div class=instructions>
-      <div class=logoContainer>
-        <!-- <img class=logoImage src='./assets/images/logo/logo256.png'/> -->
-        <div class=logoText>FixTranscript</div>
-        <div class=logoVersion>(v1.0.0)</div>
-      </div>
-      <div class=description>
-        This application helps fix transcripts
-      </div> <!-- description -->
+  <div class=headerContainer>
+    <div class=headerLeft>
+      <img class=logoImage src='./assets/images/logo/logo256.png'/>
+      <div class=logoText>FixTranscript</div>
+      <div class=logoVersion>(v1.0.0)</div>
+    </div>
+    <div class=headerMiddle></div>
+    <div class=headerRight>
       <ol>
-        <li>
-          go to the YouTube video and copy the transcription
-          <a href="">(here's how)</a>
-        </li>
-        <li>paste the transcription text into the box below</li>
-        <li>set the formatting options and press the Go! button</li>
-        <li>compare the results</li>
+        <li>paste the transcription text into the dropzone below</li>
+        <li>set the controls and press the Go! button</li>
+        <li>compare and edit the results</li>
         <li>press the copy button</li>
         <li>paste the results (ctl-v) into wherever you need them</li>
      </ol>
-    </div> <!-- instructions1 -->
+    </div>
+  </div> <!-- header -->
 
-    <div class=controls>controls</div>
-    <div class=dropZone>dropZone</div>
-    <div class=resultsZone>resultsZone</div>
-  </div>  <!-- mainContainer -->
+  <div class=controls>controls</div>
+  <div class=dropZone>dropZone</div>
+  <div class=resultsZone>resultsZone</div>
 </body>
 </html>
