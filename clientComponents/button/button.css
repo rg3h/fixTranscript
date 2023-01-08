@@ -1,0 +1,69 @@
+/** button.css **/
+
+:root {
+  --buttonBgColor: rgb(10, 100, 190);
+  --buttonFgColor: rgb(255, 255, 255);
+  --buttonHoverBgColor: rgb(0, 120, 240);
+  --buttonHoverFgColor: rgb(255, 255, 255);
+  --buttonHeight: 2rem;
+  --buttonWidth: 8rem;
+}
+
+.button,
+.buttonDisabled {
+  align-items: center;
+  background: rgb(150, 20, 220);
+  border-bottom: solid 1px transparent;
+  border-left: solid 1px rgb(235, 195, 235);
+  border-radius: 5px;
+  border-right: solid 1px transparent;
+  border-top: solid 1px rgb(235, 195, 235);
+  box-shadow: var(--boxShadowNeuSmall);
+  color: var(--buttonFgColor);
+  cursor: pointer;
+  display: flex;
+  height: var(--buttonHeight);
+  justify-content: center;
+  letter-spacing: 0.05rem;
+  outline-color: rgb(0, 100, 255);
+  outline-width: 0px;
+  padding: 5px;
+  text-align: center;
+  text-overflow: ellipsis;
+  transition-duration: 0.25s;
+  transition-property: background, box-shadow, color;
+  transition-timing-function: ease-in-out;
+  user-select: none;
+  white-space: nowrap;
+  width: var(--buttonWidth);
+}
+
+.button:hover {
+  box-shadow: var(--boxShadowNeuSmallHover);
+}
+
+.buttonIndented {
+  background: rgb(0, 0, 200);
+  color: rgb(250, 250, 250);
+}
+
+.buttonDisabled {
+  background-color: rgb(245, 245, 245);
+  border: solid 1px rgb(230, 230, 230);
+  box-shadow: none;
+  color: rgb(140, 140, 140);
+  pointer-events: none;  /* disables hover effects */
+}
+
+.backButton {
+  background: white;
+  border: solid 1px rgb(240, 210, 255);
+  box-shadow: var(--boxShadowNeuSmall);
+  box-shadow: none;
+  color: purple;
+  width: 5rem;
+}
+
+.backButton:hover {
+  box-shadow: var(--boxShadowNeuSmall);
+}
