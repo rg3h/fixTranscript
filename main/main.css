@@ -5,6 +5,7 @@
   --almostWhite:        rgb(250, 250, 250);
   --green:              rgb( 27, 133,   0);
   --lightGreen:         rgb(100, 167,  70);
+  --extraLightGreen:    rgb(155, 225, 120);
 
   --buttonBgColor:      var(--green);
   --buttonFgColor:      var(--almostWhite);
@@ -12,8 +13,6 @@
   --buttonHoverFgColor: var(--buttonFgColor);
   --buttonHeight:       2rem;
   --buttonWidth:        10rem;
-
-  --controlWidth:       15rem;
 }
 
 a {
@@ -40,7 +39,7 @@ body {
   display: grid;
   font-family: notoSans, arial;
   gap: 2rem;
-  grid-template-columns: var(--controlWidth) 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: max-content auto;
   height: 100%;
   margin: 0;
@@ -96,67 +95,80 @@ body {
 .logoImage {
   background: rgb(30, 130, 0);
   border-radius: 50%;
+  border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(27, 133, 0, 0.5);
-  height: 5rem;
+  height: 4rem;
   padding: 0.75rem;
 }
 
 .logoText {
   font-family: notoSansExtraLight, arial;
   font-family: frederickaTheGreat, notoSansExtraLight, arial;
-  font-size: 4rem;
-  margin-left: 2rem;
+  font-size: 3rem;
+  letter-spacing: 0.25rem;
+  margin-left: 1.5rem;
   margin-top: -0.1rem;
 }
 
 .logoVersion {
   align-self: end;
   font-family: notosansLight, arial;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
-.controls,
 .resultsZone,
 .dropZone {
   background: white;
   border-radius: 10px;
   color: black;
-  padding: 1rem;
   min-height: 100%;
 }
 
-.controls {
+.dropZone {
+  box-shadow: inset 3px 3px 5px rgba(100, 100, 100, 0.5);
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
 }
 
-.dropZone {
-  box-shadow: inset 5px 5px 5px rgba(100, 100, 100, 0.5);
+.resultsZone {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
 }
 
-.resultsZone {
-  grid-column-start: 3;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
+.cardBar {
+  align-items: center;
+  border-bottom: solid 1px var(--green);
+  display: flex;
+  font-family: notoSansLight, arial;
+  font-size: 1rem;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0.25rem;
+  width: 100%;
 }
 
-.footer {
+.cardBarTitle {
+}
+
+
+.dropZoneMain {
   align-items: center;
-  color: var(--lightPurple);
+  border-radius: 1rem;
+  border: dashed 5px var(--extraLightGreen);
+  color: var(--lightGreen);
   display: flex;
-  flex-direction: row;
-  flex-grow: 0;
-  font-size: 0.7rem;
+  font-size: 3rem;
+  height: calc(100% - 6rem);
   justify-content: center;
-  letter-spacing: 1px;
-  overflow: hidden;
-  padding-bottom: 0.5rem;
-  width: 100%;
+  margin: 2rem;
+  padding: 1rem;
+  width: calc(100% - 4rem);
+}
+
+,resultsZoneMain {
+  padding: 1rem;
 }
