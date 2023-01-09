@@ -39,7 +39,7 @@ body {
   display: grid;
   font-family: notoSans, arial;
   gap: 2rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 48% 48%;
   grid-template-rows: max-content auto;
   height: 100%;
   margin: 0;
@@ -47,6 +47,11 @@ body {
   padding: 1rem 2rem 2rem 2rem;
   width: 100%;
   max-width: 100rem;
+}
+
+/* hide the border for contenteditable attributes */
+[contenteditable] {
+  outline: 0px solid transparent;
 }
 
 .headerContainer {
@@ -121,6 +126,8 @@ body {
   background: white;
   border-radius: 10px;
   color: black;
+  display: flex;
+  flex-direction: column;
   min-height: 100%;
 }
 
@@ -141,7 +148,7 @@ body {
 
 .cardBar {
   align-items: center;
-  border-bottom: solid 1px var(--green);
+  border-bottom: solid 1px var(--lightGreen);
   display: flex;
   font-family: notoSansLight, arial;
   font-size: 1rem;
@@ -152,10 +159,32 @@ body {
 }
 
 .cardBarTitle {
+  color: var(--lightGreen);
+  flex-grow: 0;
 }
 
 
 .dropZoneMain {
+  flex-grow: 1;
+  overflow: auto;
+  padding: 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  z-index: 1;
+}
+
+.dropZoneMainMessage {
+  color: var(--extraLightGreen);
+  font-size: 3rem;
+  position: relative;
+  top: calc(50% - 3rem);
+  width: 100%;
+  text-align: center;
+  user-select: none;
+}
+
+.dropZoneMainBeforeDrop {
   align-items: center;
   border-radius: 1rem;
   border: dashed 5px var(--extraLightGreen);
@@ -164,11 +193,17 @@ body {
   font-size: 3rem;
   height: calc(100% - 6rem);
   justify-content: center;
-  margin: 2rem;
-  padding: 1rem;
-  width: calc(100% - 4rem);
+  margin: 1rem;
+  width: calc(100% - 2rem);
 }
 
-,resultsZoneMain {
+.resultsZoneMain {
+  background: var(--extraLightGreen);
+  background: rgb(220, 245, 225);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   padding: 1rem;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
 }
