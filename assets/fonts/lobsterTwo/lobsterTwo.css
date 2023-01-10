@@ -1,0 +1,29 @@
+/* lobsterTwo.css */
+
+@font-face {
+  font-family: 'lobsterTwo';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./LobsterTwo-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'lobsterTwoBold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./LobsterTwo-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'lobsterTwoItalic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./LobsterTwo-Italic.ttf');
+}
+
+@font-face {
+  font-family: 'lobsterTwoBoldItalic';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./LobsterTwo-BoldItalic.ttf');
+}

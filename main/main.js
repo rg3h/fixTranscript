@@ -1,20 +1,32 @@
 /**
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
+import {updateDateOnTheMinute} from '../clientComponents/date/date.js';
+const VERSION = '1.0.1';
+let dateEle, dropZoneMain;
+
+
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
 
-let dropZoneMain;
-
 // main entry point for the app
 async function main() {
+  createHeader();
+
   dropZoneMain = document.getElementsByClassName('dropZoneMainBeforeDrop')[0];
   setEmptySelection();
 
   // dropZoneMain.addEventListener('keypress', handleDropZoneKeyPress);
   dropZoneMain.addEventListener('pointerdown', handleDropZonePointerDown);
   dropZoneMain.addEventListener('paste', handlePaste);
+}
+
+function createHeader() {
+  document.getElementsByClassName('logoVersion')[0].innerHTML = VERSION;
+  dateEle = document.getElementsByClassName('headerDate')[0];
+  dateEle.innerHTML = 'DATE DATE DATE';
+  updateDateOnTheMinute(dateEle, 'MMMM DTH, YYYY HH:NN AMPM');
 }
 
 function handleDropZonePointerDown(e) {

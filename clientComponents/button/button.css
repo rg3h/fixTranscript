@@ -12,7 +12,7 @@
 .button,
 .buttonDisabled {
   align-items: center;
-  background: rgb(150, 20, 220);
+  background: var(--buttonBgColor);
   border-bottom: solid 1px transparent;
   border-left: solid 1px rgb(235, 195, 235);
   border-radius: 5px;
@@ -39,7 +39,9 @@
 }
 
 .button:hover {
+  background: var(--buttonHoverBgColor);
   box-shadow: var(--boxShadowNeuSmallHover);
+  color: var(--buttonHoverFgColor);
 }
 
 .buttonIndented {

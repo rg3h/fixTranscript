@@ -7,12 +7,12 @@
   --lightGreen:         rgb(100, 167,  70);
   --extraLightGreen:    rgb(155, 225, 120);
 
-  --buttonBgColor:      var(--green);
+  --buttonBgColor:      var(--blue);
   --buttonFgColor:      var(--almostWhite);
-  --buttonHoverBgColor: var(--lightPurple);
+  --buttonHoverBgColor: var(--lightBlue);
   --buttonHoverFgColor: var(--buttonFgColor);
   --buttonHeight:       2rem;
-  --buttonWidth:        10rem;
+  --buttonWidth:        6rem;
 }
 
 a {
@@ -29,6 +29,8 @@ html {
   display: flex;
   height: 100%;
   justify-content: center;
+  margin: 0;
+  padding: 0;
   width: 100%;
 }
 
@@ -36,15 +38,13 @@ body {
   animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
   background: var(--lightGreen);
   color: white;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   font-family: notoSans, arial;
-  gap: 2rem;
-  grid-template-columns: 48% 48%;
-  grid-template-rows: max-content auto;
   height: 100%;
   margin: 0;
   opacity: 0;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 0rem 2rem 2rem 2rem;
   width: 100%;
   max-width: 100rem;
 }
@@ -55,16 +55,14 @@ body {
 }
 
 .headerContainer {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
   flex-direction: row;
   flex-grow: 0;
   gap: 1rem;
   justify-content: space-between;
+  margin-bottom: 1rem;
+  min-height: 2rem;
   overflow: hidden;
   width: 100%;
 }
@@ -80,6 +78,7 @@ body {
 
 .headerMiddle {
   align-items: center;
+  display: flex;
   flex-grow: 1;
   font-family: notoSansLight, arial;
   font-size: 2rem;
@@ -91,28 +90,29 @@ body {
 .headerRight {
   display: flex;
   flex-grow: 0;
-  min-width: 25rem;
+  justify-content: flex-end;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 420px;
+}
+
+.headerDate {
 }
 
 .logoImage {
   background: rgb(30, 130, 0);
-  border-radius: 50%;
   border-radius: 10px;
   box-shadow: 5px 5px 5px rgba(27, 133, 0, 0.5);
-  height: 4rem;
+  display: none;
+  font-family: lobsterTwo;
+  font-size: 36px;
+  margin-right: 1.5rem;
   padding: 0.75rem;
+  text-align: center;
 }
 
 .logoText {
-  font-family: notoSansExtraLight, arial;
-  font-family: frederickaTheGreat, notoSansExtraLight, arial;
+  font-family: lobsterTwo, notoSansExtraLight, arial;
   font-size: 3rem;
-  letter-spacing: 0.25rem;
-  margin-left: 1.5rem;
-  margin-top: -0.1rem;
 }
 
 .logoVersion {
@@ -121,8 +121,17 @@ body {
   font-size: 0.75rem;
 }
 
-.resultsZone,
-.dropZone {
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.dropZoneContainer,
+.resultsZoneContainer {
   background: white;
   border-radius: 10px;
   color: black;
@@ -131,37 +140,62 @@ body {
   min-height: 100%;
 }
 
-.dropZone {
+.dropZoneContainer {
   box-shadow: inset 3px 3px 5px rgba(100, 100, 100, 0.5);
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  width: 50%;
 }
 
-.resultsZone {
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+.resultsZoneContainer {
+  width: 50%;
 }
 
-.cardBar {
+.cardBarContainer {
   align-items: center;
-  border-bottom: solid 1px var(--lightGreen);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border: solid 1px var(--extraLightGreen);
   display: flex;
-  font-family: notoSansLight, arial;
-  font-size: 1rem;
+  flex-direction: row;
+  flex-grow: 0;
   gap: 1rem;
-  justify-content: center;
-  padding: 0.25rem;
+  justify-content: space-between;
+  min-height: 2rem;
+  overflow: hidden;
+  padding: 0.5rem;
   width: 100%;
+}
+
+.cardBarLeft {
+  align-items: center;
+  display: flex;
+  flex-grow: 0;
+  gap: 0.5rem;
+  justify-content: flex-start;
+  width: 33%;
+}
+
+.cardBarMiddle {
+//  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  gap: 0.5rem;
+  justify-content: center;
+  width: 34%;
+}
+
+.cardBarRight {
+  display: flex;
+  flex-grow: 0;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  width: 33%;
 }
 
 .cardBarTitle {
   color: var(--lightGreen);
   flex-grow: 0;
 }
+
 
 
 .dropZoneMain {
