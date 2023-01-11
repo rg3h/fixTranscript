@@ -10,7 +10,7 @@ import {addEventListener,
 
 const NBSP = '\u00A0';
 const VERSION = '1.1.2';
-const DROPZONE_DEFAULT_MSG = 'paste your text here';
+const DROPZONE_DEFAULT_MSG = 'paste your text here ';
 const RESULTS_DEFAULT_MSG = 'results will show up here';
 
 let dropZoneMain, resultsZoneMain;
@@ -22,6 +22,7 @@ window.addEventListener('unload', function () {});  // break back button cache
 async function main() {
   createHeader();
   createClearButton();
+  createAboutButton();
 
   resultsZoneMain = getFirstElementByClassName('resultsZoneEditableContainer');
   resultsZoneMain.innerHTML = RESULTS_DEFAULT_MSG;
@@ -40,6 +41,16 @@ function createHeader() {
   getFirstElementByClassName('logoVersion').innerHTML = VERSION;
   let dateEle = getFirstElementByClassName('headerDate');
   updateDateOnTheMinute(dateEle, 'MMMM DTH, YYYY HH:NN AMPM');
+}
+
+function createAboutButton() {
+  let aboutButton = getFirstElementByName('aboutButton');
+  aboutButton.addEventListener('pointerup', handleAboutButton);
+  return aboutButton;
+}
+
+function handleAboutButton(e) {
+  window.location.href = './about/index.html';
 }
 
 function createClearButton() {

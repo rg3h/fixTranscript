@@ -1,0 +1,87 @@
+<!DOCTYPE html> <!-- fixTranscript/about/index.html -->
+<html><head>
+  <meta charset="utf-8" />
+  <title>fixTranscript about</title>
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+  <link rel=apple-touch-icon href="../assets/images/logo/logo256.png">
+  <link rel=icon href="../assets/images/logo/logo256.png">
+
+  <link rel="stylesheet" href="../assets/fonts/lobsterTwo/lobsterTwo.css">
+  <link rel="stylesheet" href="../assets/fonts/notoSans/notoSans.css">
+
+  <link rel="stylesheet" href="../clientComponents/css/reset.css">
+  <link rel="stylesheet" href="../clientComponents/css/base.css">
+  <link rel="stylesheet" href="../clientComponents/css/anim.css">
+  <link rel="stylesheet" href="../clientComponents/button/button.css">
+  <link rel="stylesheet" href="./main/main.css">
+
+  <script type="module" src="main/main.js"></script>
+</head>
+<body>
+  <div class=headerContainer>
+    <div class=headerLeft>
+      <div class=logoImage>FT</div>
+      <div class=logoText>FixTranscript</div>
+      <div class=logoVersion></div>
+    </div>
+    <div class=headerMiddle>About</div>
+    <div class=headerRight>
+      <div class=headerDate></div>
+      <div class="button" name="backButton" class=cardBarButton>back</div>
+    </div>
+  </div> <!-- header -->
+
+  <div class=mainContainer>
+    <h1>Description</h1>
+    FixTranscript was originally designed to make it easier to copy a
+    youTube video transcript and make some simple fixes. The person
+    would take the text from a YouTube transcription and insert
+    periods for the sentence breaks, then use this tool to
+    automatically capitalize the sentences.
+    <br><br>
+    In the future this tool could do more -- fix urls, load a "change
+    dictionary" to allow custom string replacements, even do NLP to
+    find sentences.  This tool might also be useful for edits to other
+    text besides YouTube transcriptions.
+
+    <h1>Work in Progress</h1>
+      <ul>
+        <li>fixText engine</li>
+        <li>checkbuttons for spaces and capitalization</li>
+        <li>unit tests</li>
+        <li>file load button</li>
+        <li>file save button</li>
+        <li>refactor into components</li>
+        <li>event model for component-to-component communication</li>
+        <li>wiggle title</li>
+        <li>github link in header</li>
+        <li>prevent editing modes</li>
+        <li>enable/disable buttons based on text loaded</li>
+        <li>rename from fixTranscript</li>
+      </ul>
+
+    <h1>Known Bugs</h1>
+      <ul>
+        <li>dropZone and resultsZone widths not adjusting correctly</li>
+        <li>index.html and divs need clean up</li>
+      </ul>
+
+    <h1>Future</h1>
+      <ul>
+        <li>url fix tool</li>
+        <li>changeDictionary</li>
+        <li>undo/redo</li>
+        <li>NLP SBD</li>
+        <li>sponsor</li>
+        <li>own url if people want more from it</li>
+        <li>API</li>
+        <li>mobile/tablet tools</li>
+        <li>scripting and storing/saving the script</li>
+      </ul>
+  </div> <!-- mainContainer -->
+</body>
+</html>
