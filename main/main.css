@@ -1,15 +1,10 @@
 /** fixTranscript/main/main.css **/
 
 :root {
-  --almostBlack:        rgb( 30,  30,  30);
-  --almostWhite:        rgb(250, 250, 250);
-  --green:              rgb( 27, 133,   0);
-  --lightGreen:         rgb(100, 167,  70);
-  --extraLightGreen:    rgb(155, 225, 120);
-
-  --buttonBgColor:      var(--blue);
+  --buttonBgColor:      rgb(  5, 140, 170);
+  --buttonBgColor:      var(--lightBlue);
   --buttonFgColor:      var(--almostWhite);
-  --buttonHoverBgColor: var(--lightBlue);
+  --buttonHoverBgColor: var(--blue);
   --buttonHoverFgColor: var(--buttonFgColor);
   --buttonHeight:       2rem;
   --buttonWidth:        6rem;
@@ -36,22 +31,27 @@ html {
 
 body {
   animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
-  background: var(--lightGreen);
+  background: var(--green);
   color: white;
   display: flex;
   flex-direction: column;
   font-family: notoSans, arial;
   height: 100%;
   margin: 0;
+  max-width: 100rem;
   opacity: 0;
   padding: 0rem 2rem 2rem 2rem;
   width: 100%;
-  max-width: 100rem;
 }
 
 /* hide the border for contenteditable attributes */
 [contenteditable] {
   outline: 0px solid transparent;
+}
+
+.button,
+.buttonDisabled {
+  width: auto;
 }
 
 .headerContainer {
@@ -72,8 +72,8 @@ body {
   display: flex;
   flex-grow: 0;
   justify-content: flex-start;
-  min-width: 500px;
   max-width: 500px;
+  min-width: 500px;
 }
 
 .headerMiddle {
@@ -91,8 +91,8 @@ body {
   display: flex;
   flex-grow: 0;
   justify-content: flex-end;
-  white-space: nowrap;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .headerDate {
@@ -124,9 +124,12 @@ body {
 .mainContainer {
   display: flex;
   flex-direction: row;
+  flex-grow: 0;
   gap: 2rem;
-  justify-content: flex-start;
   height: 100%;
+  justify-content: flex-start;
+  max-width: 100%;
+  min-width: 100%;
   width: 100%;
 }
 
@@ -137,6 +140,7 @@ body {
   color: black;
   display: flex;
   flex-direction: column;
+  max-height: 100%;
   min-height: 100%;
 }
 
@@ -151,9 +155,9 @@ body {
 
 .cardBarContainer {
   align-items: center;
+  border-bottom: solid 1px var(--lightGreen);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  border: solid 1px var(--extraLightGreen);
   display: flex;
   flex-direction: row;
   flex-grow: 0;
@@ -175,7 +179,6 @@ body {
 }
 
 .cardBarMiddle {
-//  align-items: center;
   display: flex;
   flex-grow: 1;
   gap: 0.5rem;
@@ -196,48 +199,19 @@ body {
   flex-grow: 0;
 }
 
-
-
-.dropZoneMain {
-  flex-grow: 1;
-  overflow: auto;
-  padding: 1rem;
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  z-index: 1;
-}
-
-.dropZoneMainMessage {
-  color: var(--extraLightGreen);
-  font-size: 3rem;
-  position: relative;
-  top: calc(50% - 3rem);
-  width: 100%;
-  text-align: center;
-  user-select: none;
-}
-
-.dropZoneMainBeforeDrop {
-  align-items: center;
-  border-radius: 1rem;
-  border: dashed 5px var(--extraLightGreen);
-  color: var(--lightGreen);
-  display: flex;
-  font-size: 3rem;
-  height: calc(100% - 6rem);
-  justify-content: center;
-  margin: 1rem;
-  width: calc(100% - 2rem);
-}
-
-.resultsZoneMain {
+.dropZoneEditableContainer,
+.resultsZoneEditableContainer {
   background: var(--extraLightGreen);
-  background: rgb(220, 245, 225);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  padding: 1rem;
-  overflow: auto;
-  width: 100%;
+  flex-grow: 0;
   height: 100%;
+  max-height: 100%;
+  overflow: auto;
+  padding: 1rem;
+  width: 100%;
+}
+
+.dropZoneEditableContainer {
+  background: inherit;
 }

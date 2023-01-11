@@ -2,10 +2,12 @@
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
 import {updateDateOnTheMinute} from '../clientComponents/date/date.js';
+import {getFirstElementByClassName} from '../clientComponents/html/html.js';
+
+const NBSP = '\u00A0';
 const VERSION = '1.1.2';
-let dateEle, dropZoneMain;
-
-
+const DEFAULT_MSG = 'paste your text here';
+let dropZoneMain;
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
@@ -14,33 +16,38 @@ window.addEventListener('unload', function () {});  // break back button cache
 async function main() {
   createHeader();
 
-  dropZoneMain = document.getElementsByClassName('dropZoneMainBeforeDrop')[0];
-  setEmptySelection();
+  dropZoneMain = getFirstElementByClassName('dropZoneEditableContainer');
+  dropZoneMain.innerHTML = DEFAULT_MSG;
+  setSelectionToEnd();
 
   // dropZoneMain.addEventListener('keypress', handleDropZoneKeyPress);
   dropZoneMain.addEventListener('pointerdown', handleDropZonePointerDown);
   dropZoneMain.addEventListener('paste', handlePaste);
+  dropZoneMain.addEventListener('focusout', handleFocusOut);
 }
 
 function createHeader() {
-  document.getElementsByClassName('logoVersion')[0].innerHTML = VERSION;
-  dateEle = document.getElementsByClassName('headerDate')[0];
-  dateEle.innerHTML = 'DATE DATE DATE';
+  getFirstElementByClassName('logoVersion').innerHTML = VERSION;
+  let dateEle = getFirstElementByClassName('headerDate');
   updateDateOnTheMinute(dateEle, 'MMMM DTH, YYYY HH:NN AMPM');
+}
+
+function setSelectionToEnd() {
+  dropZoneMain.focus();
+  let selection = window.getSelection();
+  let firstChild = dropZoneMain.firstChild;
+  selection.collapse(firstChild, firstChild.length);  // end of the line
+  // selection.modify('extend', 'forward', 'line');  // selects the entire line
 }
 
 function handleDropZonePointerDown(e) {
   e.preventDefault;
-  setEmptySelection();
-}
 
-function setEmptySelection() {
-  dropZoneMain.innerHTML = '\u00A0';
-  dropZoneMain.focus();
-  let selection = window.getSelection();
-  // selection.modify('extend', 'forward', 'line');  // selects the entire line
-  let firstChild = dropZoneMain.firstChild;
-  selection.collapse(firstChild, firstChild.length/2);
+  // they clicked on the default msg so clear it
+  if (dropZoneMain.innerHTML  === DEFAULT_MSG) {
+    dropZoneMain.innerHTML = NBSP;
+    setSelectionToEnd();
+  }
 }
 
 function handleDropZoneKeyPress(e) {
@@ -63,24 +70,28 @@ function handleDropZoneKeyPress(e) {
 function handlePaste(e) {
   e.preventDefault;
 
-  dropZoneMain.className = 'dropZoneMain';
-
   let text = (e.clipboardData || window.clipboardDats).getData('text');
-  console.log(text);
   text = fixText(text);
-  let result = document.getElementsByClassName('resultsZoneMain')[0];
+  let result = getFirstElementByClassName('resultsZoneEditableContainer');
   result.innerHTML = text;
+}
 
-/***
-  setTimeout(function() {
-    let result = document.getElementsByClassName('resultsZoneMain')[0];
-    result.innerHTML = null;
-    let clone = dropZoneMain.cloneNode(true);
-    result.appendChild(clone);
-  }, 0);
-***/
+function handleFocusOut(event) {
+  console.log('Focus left!');
+
+  // If focus is still in the element do nothing
+  if (dropZoneMain.contains(event.relatedTarget)) {
+    return;
+  }
+
+  let currentMsg = dropZoneMain.innerHTML;
+  if (!currentMsg || currentMsg.length < 1 || currentMsg === '&nbsp;') {
+    dropZoneMain.innerHTML = DEFAULT_MSG;
+    setSelectionToEnd();
+  }
 }
 
 function fixText(textIn) {
+  console.log('pre fixText()', textIn);
   return textIn.toUpperCase();
 }

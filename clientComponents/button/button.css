@@ -6,7 +6,7 @@
   --buttonHoverBgColor: rgb(0, 120, 240);
   --buttonHoverFgColor: rgb(255, 255, 255);
   --buttonHeight: 2rem;
-  --buttonWidth: 8rem;
+  --buttonWidth: 8rem;  /* not used we set button width: auto */
 }
 
 .button,
