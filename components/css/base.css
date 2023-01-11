@@ -1,0 +1,166 @@
+/* base.css */
+:root {
+  --almostBlack:           rgb( 25,  25,  25);
+  --almostWhite:           rgb(250, 250, 250);
+
+  --grey250:               rgb(250, 250, 250);
+  --grey240:               rgb(240, 240, 240);
+  --grey230:               rgb(230, 230, 230);
+  --grey220:               rgb(220, 220, 220);
+  --grey210:               rgb(210, 210, 210);
+  --grey200:               rgb(200, 200, 200);
+  --grey180:               rgb(180, 180, 180);
+  --grey150:               rgb(150, 150, 150);
+  --grey140:               rgb(140, 140, 140);
+  --grey130:               rgb(130, 130, 130);
+  --grey120:               rgb(120, 120, 120);
+  --grey110:               rgb(110, 110, 110);
+  --grey100:               rgb(100, 100, 100);
+  --grey70:                rgb( 70,  70,  70);
+  --grey60:                rgb( 60,  60,  60);
+  --grey50:                rgb( 50,  50,  50);
+  --grey40:                rgb( 40,  40,  40);
+  --grey35:                rgb( 35,  35,  35);
+  --grey30:                rgb( 30,  30,  30);
+  --grey20:                rgb( 20,  20,  20);
+
+  --paperGrey:             rgb(245, 240, 230);
+  --paperBeige:            rgb(255, 245, 230);
+  --paperDarkBeige:        rgb(255, 235, 195);
+
+  --blue1:                 rgb( 20, 120, 220);
+  --blue2:                 rgb( 10, 100, 190);
+  --blue3:                 rgb( 10, 100, 190);
+  --blue4:                 rgb(  0,  90, 225);
+  --blue5:                 rgb( 75, 130, 220);
+  --babyBlue:              rgb(210, 243, 255);
+  --extraLightBlue:        rgb(236, 243, 255);
+  --lightBlue:             rgb(  0, 175, 225);
+  --medBlue:               rgb( 90, 136, 205);
+  --darkBlue:              rgb(  0,   0, 225);
+
+  --green:                 rgb( 45, 145,  65);
+  --lightGreen:            rgb(100, 167,  70);
+  --extraLightGreen:       rgb(220, 245, 225);
+  --extraExtraLightGreen:  rgb(240, 255, 240);
+  --darkGreen:             rgb( 27, 133,   0);
+  --extraDarkGreen:        rgb(  0, 100,   0);
+
+  --orange:                rgb(225,  95,   0);
+  --darkOrange:            rgb(220, 110,   0);
+
+  --extraDarkPurple:       rgb( 70,   0,  70);
+  --darkPurple:            rgb( 95,  50, 130);
+  --purple:                rgb(130,  70, 180);
+  --lightPurple:           rgb(170, 115, 220);
+
+  --inactiveBgColor:       rgb(230, 230, 230);
+  --inactiveColor:         rgb(150, 150, 150);
+
+  --borderColor:           var(--grey200);
+  --border:                solid 1px var(--borderColor);
+  --borderRadius:          10px;
+  --borderTransparent:      solid 1px transparent;
+
+  --fontFamily:            notoSans, Georgia;      /* georgia so can see bug */
+  --fontFamilyLight:       notoSansLight, Georgia; /* georgia so can see bug */
+  --fontFamilyExtraLight:  notoSansExtraLight, Georgia; /* georgia so see bug */
+  --fontSize:              14px;
+  --fontWeight:            200;
+  --font:                  normal normal normal var(--fontWeight)
+                           var(--fontSize) var(--fontFamily);
+  --fontLight:             normal normal normal var(--fontWeight)
+                           var(--fontSize) var(--fontFamilyLight);
+  --fontExtraLight:        normal normal normal var(--fontWeight)
+                           var(--fontSize) var(--fontFamilyExtraLight);
+  --padding:               20px;
+
+  /********** shadows **********/
+  --boxShadow:             3px 3px 3px rgb(100, 100, 100, 0.25);
+  --boxShadowHover:        6px 6px 3px rgb(100, 100, 100, 0.25);
+  --boxShadowTransparent:  3px 3px 3px transparent;
+  --boxShadowNoAlpha:      3px 3px 3px var(--grey200);
+
+  --boxShadowNeu:
+      -6px -6px 12px 0 rgba(255, 255, 255, 0.5),
+      6px 6px 12px 0 rgba(0, 0, 0, 0.2);
+
+
+  --boxShadowNeuHover:
+      -12px -12px 24px 0 rgba(255, 255, 255, 0.5),
+      12px 12px 24px 0 rgba(0, 0, 0, 0.2);
+
+
+  --boxShadowNeuSmall:
+      -3px -3px 6px 0 rgba(255, 255, 255, 1),
+      3px 3px 6px 0 rgba(0, 0, 0, 0.2);
+
+  --boxShadowNeuSmallHover:
+      -6px -6px 12px 0 rgba(255, 255, 255, 0.5),
+      6px 6px 12px 0 rgba(0, 0, 0, 0.2);
+
+  --textWhiteShadow:
+      5px  5px 5px rgba(250, 250, 250, 0.75),
+      5px -5px 5px rgba(250, 250, 250, 0.75),
+     -5px -5px 5px rgba(250, 250, 250, 0.75),
+     -5px  5px 5px rgba(250, 250, 250, 0.75);
+
+  --textBlackShadow:
+      5px  5px 5px rgba(50, 50, 50, 0.75),
+      5px -5px 5px rgba(50, 50, 50, 0.75),
+     -5px -5px 5px rgba(50, 50, 50, 0.75),
+     -5px  5px 5px rgba(50, 50, 50, 0.75);
+
+  --textShadowPunchOut:
+      1px 1px 1px rgba(255, 255, 255, 0.5),
+      -1px -1px 1px rgba(0, 0, 0, 0.7);
+
+  --textShadowFilter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4))
+                      drop-shadow(1px 0px 1px rgba(0, 0, 0, 0.4))
+                      drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.4))
+                      drop-shadow(-1px -1px 1px rgba(0, 0, 0, 0.4));
+
+
+/*****
+  /* https://www.joshwcomeau.com/shadow-palette/ */
+  --shadow-elevation-medium:
+    0.6px 0.7px 0.8px hsl(var(0deg 0% 74%) / 0.39),
+    1.3px 1.4px 1.7px -1.3px hsl(var(0deg 0% 74%) / 0.32),
+    3.9px 4.2px 5.1px -2.7px hsl(var(0deg 0% 74%) / 0.24),
+    10.7px 11.5px 14px -4.1px hsl(var(0deg 0% 74%) / 0.17);
+  --shadow-elevation-high:
+    0.6px 0.7px 0.8px hsl(var(0deg 0% 74%) / 0.36),
+    1.5px 1.6px 2px -0.6px hsl(var(0deg 0% 74%) / 0.33),
+    2.9px 3.1px 3.8px -1.2px hsl(var(0deg 0% 74%) / 0.29),
+    5.5px 5.9px 7.2px -1.7px hsl(var(0deg 0% 74%) / 0.26),
+    10px 10.8px 13.1px -2.3px hsl(var(0deg 0% 74%) / 0.22),
+    17.4px 18.7px 22.8px -2.9px hsl(var(0deg 0% 74%) / 0.19),
+    28.1px 30.3px 36.9px -3.5px hsl(var(0deg 0% 74%) / 0.16),
+    43.1px 46.4px 56.5px -4.1px hsl(var(0deg 0% 74%) / 0.12);
+*****/
+
+  /* https://www.joshwcomeau.com/shadow-palette/ */
+  --boxShadowLowHeight:
+    0.6px 0.7px 0.8px hsl(var(0deg 0% 0%) / 0.11),
+    0.9px 0.9px 1.1px -2px hsl(var(0deg 0% 0%) / 0.08),
+    2.1px 2.3px 2.8px -4.1px hsl(var(0deg 0% 0%) / 0.05);
+  --boxShadowMediumHeight:
+    0.6px 0.7px 0.8px hsl(var(0deg 0% 0%) / 0.12),
+    1.3px 1.4px 1.7px -1.3px hsl(var(0deg 0% 0%) / 0.1),
+    3.9px 4.2px 5.1px -2.7px hsl(var(0deg 0% 0%) / 0.07),
+    10.7px 11.5px 14px -4.1px hsl(var(0deg 0% 0%) / 0.05);
+  --boxShadowHighHeight:
+    0.6px 0.7px 0.8px hsl(var(0deg 0% 0%) / 0.11),
+    1.5px 1.6px 2px -0.6px hsl(var(0deg 0% 0%) / 0.1),
+    2.9px 3.1px 3.8px -1.2px hsl(var(0deg 0% 0%) / 0.09),
+    5.5px 5.9px 7.2px -1.7px hsl(var(0deg 0% 0%) / 0.08),
+    10px 10.8px 13.1px -2.3px hsl(var(0deg 0% 0%) / 0.07),
+    17.4px 18.7px 22.8px -2.9px hsl(var(0deg 0% 0%) / 0.06),
+    28.1px 30.3px 36.9px -3.5px hsl(var(0deg 0% 0%) / 0.05),
+    43.1px 46.4px 56.5px -4.1px hsl(var(0deg 0% 0%) / 0.04);
+}
+
+html {
+  font: var(--font);
+  width: 100%;
+}

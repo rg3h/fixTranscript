@@ -1,15 +1,15 @@
 /**
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
-import {updateDateOnTheMinute}      from '../clientComponents/date/date.js';
+import {updateDateOnTheMinute}      from '../components/date/date.js';
 import {getFirstElementByClassName,
-        getFirstElementByName}      from '../clientComponents/html/html.js';
+        getFirstElementByName}      from '../components/html/html.js';
 import {addEventListener,
         dispatchEvent,
-        eventList}                  from '../clientComponents/event/event.js';
+        eventList}                  from '../components/event/event.js';
+import {getVersion}                 from '../components/version/version.js';
 
 const NBSP = '\u00A0';
-const VERSION = '1.1.2';
 const DROPZONE_DEFAULT_MSG = 'paste your text here ';
 const RESULTS_DEFAULT_MSG = 'results will show up here';
 
@@ -38,7 +38,7 @@ async function main() {
 }
 
 function createHeader() {
-  getFirstElementByClassName('logoVersion').innerHTML = VERSION;
+  getFirstElementByClassName('logoVersion').innerHTML = getVersion();
   let dateEle = getFirstElementByClassName('headerDate');
   updateDateOnTheMinute(dateEle, 'MMMM DTH, YYYY HH:NN AMPM');
 }
