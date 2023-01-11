@@ -31,18 +31,25 @@
     <div class=headerMiddle></div>
     <div class=headerRight><div class=headerDate></div></div>
   </div> <!-- header -->
+
+  <div class=buttonListContainer>
+    <div class="button" class=cardBarButton>upload</div>
+    <div class=buttonSubListContainer>
+      <div class="button" class=cardBarButton>save</div>
+      <div class="button" class=cardBarButton>copy onto clipboard</div>
+    </div>
+    <div class="button" class=cardBarButton>clear</div>
+  </div>
+
   <div class=mainContainer>
     <div class=dropZoneContainer>
       <div class=cardBarContainer>
         <div class=cardBarLeft>
-          <div class="button" class=cardBarButton>upload</div>
-          <div class="button" class=cardBarButton>clear</div>
         </div>
         <div class=cardBarMiddle>
           <div class=cardBarTitle>original text</div>
         </div>
         <div class=cardBarRight>
-          <div class="button" class=cardBarButton>apply changes</div>
         </div>
       </div> <!-- cardBarContainer -->
       <pre contenteditable class=dropZoneEditableContainer></pre>
@@ -56,11 +63,10 @@
           <div class=cardBarTitle>results</div>
         </div>
         <div class=cardBarRight>
-          <div class="button" class=cardBarButton>save</div>
-          <div class="button" class=cardBarButton>copy onto clipboard</div>
         </div>
       </div> <!-- cardBarContainer -->
-      <pre contenteditable class=resultsZoneEditableContainer>results will show up here</pre>
+      <pre contenteditable
+           class=resultsZoneEditableContainer>results will show up here</pre>
     </div>
   </div> <!-- mainContainer -->
 </body>

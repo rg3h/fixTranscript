@@ -28,9 +28,11 @@
   --paperBeige:            rgb(255, 245, 230);
   --paperDarkBeige:        rgb(255, 235, 195);
 
-  --blue:                  rgb( 10, 100, 190);
-  --blue2:                 rgb(  0,  90, 225);
-  --blue3:                 rgb( 75, 130, 220);
+  --blue1:                 rgb( 20, 120, 220);
+  --blue2:                 rgb( 10, 100, 190);
+  --blue3:                 rgb( 10, 100, 190);
+  --blue4:                 rgb(  0,  90, 225);
+  --blue5:                 rgb( 75, 130, 220);
   --babyBlue:              rgb(210, 243, 255);
   --extraLightBlue:        rgb(236, 243, 255);
   --lightBlue:             rgb(  0, 175, 225);
@@ -75,6 +77,7 @@
 
   /********** shadows **********/
   --boxShadow:             3px 3px 3px rgb(100, 100, 100, 0.25);
+  --boxShadowHover:        6px 6px 3px rgb(100, 100, 100, 0.25);
   --boxShadowTransparent:  3px 3px 3px transparent;
   --boxShadowNoAlpha:      3px 3px 3px var(--grey200);
 

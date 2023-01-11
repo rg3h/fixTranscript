@@ -3,8 +3,9 @@
 :root {
   --buttonBgColor:      rgb(  5, 140, 170);
   --buttonBgColor:      var(--lightBlue);
+  --buttonBgColor:      var(--blue2);
   --buttonFgColor:      var(--almostWhite);
-  --buttonHoverBgColor: var(--blue);
+  --buttonHoverBgColor: var(--blue1);
   --buttonHoverFgColor: var(--buttonFgColor);
   --buttonHeight:       2rem;
   --buttonWidth:        6rem;
@@ -51,7 +52,13 @@ body {
 
 .button,
 .buttonDisabled {
+  border: none;
+  box-shadow: var(--boxShadow);
   width: auto;
+}
+
+.button:hover {
+  box-shadow: var(--boxShadowHover);
 }
 
 .headerContainer {
@@ -100,7 +107,7 @@ body {
 
 .logoImage {
   background: rgb(30, 130, 0);
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   box-shadow: 5px 5px 5px rgba(27, 133, 0, 0.5);
   display: none;
   font-family: lobsterTwo;
@@ -121,6 +128,24 @@ body {
   font-size: 0.75rem;
 }
 
+.buttonSubListContainer,
+.buttonListContainer {
+  background: black;
+  background: var(--extraLightGreen);
+  border-radius: var(--borderRadius);
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.buttonSubListContainer {
+  margin: 0;
+  padding: 0;
+}
+
 .mainContainer {
   display: flex;
   flex-direction: row;
@@ -136,7 +161,7 @@ body {
 .dropZoneContainer,
 .resultsZoneContainer {
   background: white;
-  border-radius: 10px;
+  border-radius: var(--borderRadius);
   color: black;
   display: flex;
   flex-direction: column;
