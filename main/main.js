@@ -1,13 +1,19 @@
 /**
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
-import {updateDateOnTheMinute} from '../clientComponents/date/date.js';
-import {getFirstElementByClassName} from '../clientComponents/html/html.js';
+import {updateDateOnTheMinute}      from '../clientComponents/date/date.js';
+import {getFirstElementByClassName,
+        getFirstElementByName}      from '../clientComponents/html/html.js';
+import {addEventListener,
+        dispatchEvent,
+        eventList}                  from '../clientComponents/event/event.js';
 
 const NBSP = '\u00A0';
 const VERSION = '1.1.2';
-const DEFAULT_MSG = 'paste your text here';
-let dropZoneMain;
+const DROPZONE_DEFAULT_MSG = 'paste your text here';
+const RESULTS_DEFAULT_MSG = 'results will show up here';
+
+let dropZoneMain, resultsZoneMain;
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
@@ -15,9 +21,13 @@ window.addEventListener('unload', function () {});  // break back button cache
 // main entry point for the app
 async function main() {
   createHeader();
+  createClearButton();
+
+  resultsZoneMain = getFirstElementByClassName('resultsZoneEditableContainer');
+  resultsZoneMain.innerHTML = RESULTS_DEFAULT_MSG;
 
   dropZoneMain = getFirstElementByClassName('dropZoneEditableContainer');
-  dropZoneMain.innerHTML = DEFAULT_MSG;
+  dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
   setSelectionToEnd();
 
   // dropZoneMain.addEventListener('keypress', handleDropZoneKeyPress);
@@ -32,6 +42,18 @@ function createHeader() {
   updateDateOnTheMinute(dateEle, 'MMMM DTH, YYYY HH:NN AMPM');
 }
 
+function createClearButton() {
+  let clearButton = getFirstElementByName('clearButton');
+  clearButton.addEventListener('pointerup', handleClearButton);
+  return clearButton;
+}
+
+function handleClearButton(e) {
+  resultsZoneMain.innerHTML = RESULTS_DEFAULT_MSG;
+  dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
+  setSelectionToEnd();
+}
+
 function setSelectionToEnd() {
   dropZoneMain.focus();
   let selection = window.getSelection();
@@ -44,7 +66,7 @@ function handleDropZonePointerDown(e) {
   e.preventDefault;
 
   // they clicked on the default msg so clear it
-  if (dropZoneMain.innerHTML  === DEFAULT_MSG) {
+  if (dropZoneMain.innerHTML  === DROPZONE_DEFAULT_MSG) {
     dropZoneMain.innerHTML = NBSP;
     setSelectionToEnd();
   }
@@ -72,21 +94,19 @@ function handlePaste(e) {
 
   let text = (e.clipboardData || window.clipboardDats).getData('text');
   text = fixText(text);
-  let result = getFirstElementByClassName('resultsZoneEditableContainer');
-  result.innerHTML = text;
+  resultsZoneMain.innerHTML = text;
 }
 
 function handleFocusOut(event) {
-  console.log('Focus left!');
-
-  // If focus is still in the element do nothing
+  // if focus is still in the element do nothing
   if (dropZoneMain.contains(event.relatedTarget)) {
     return;
   }
 
+  // if the currentMsg is empty, then set it to the default message
   let currentMsg = dropZoneMain.innerHTML;
   if (!currentMsg || currentMsg.length < 1 || currentMsg === '&nbsp;') {
-    dropZoneMain.innerHTML = DEFAULT_MSG;
+    dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
     setSelectionToEnd();
   }
 }
