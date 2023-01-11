@@ -61,6 +61,12 @@ body {
   box-shadow: var(--boxShadowHover);
 }
 
+.buttonDisabled {
+  opacity: 0.5;
+  border: solid 1px rgb(220, 220, 220);
+  box-shadow: none;
+}
+
 .headerContainer {
   align-items: center;
   display: flex;
@@ -130,7 +136,6 @@ body {
 
 .buttonSubListContainer,
 .buttonListContainer {
-  background: black;
   background: var(--extraLightGreen);
   border-radius: var(--borderRadius);
   display: flex;
