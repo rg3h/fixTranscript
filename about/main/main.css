@@ -26,6 +26,8 @@ h1 {
 }
 
 h2 {
+  font-family: notoSansLight, arial;
+  font-weight: normal;
   margin-top: 1rem;
   margin-bottom: 0rem;
 }
