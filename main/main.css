@@ -132,6 +132,13 @@ body {
   align-self: end;
   font-family: notosansLight, arial;
   font-size: 0.75rem;
+  margin-right: 2rem;
+}
+
+.logoStatusBadge {
+  box-shadow: var(--boxShadow);
+  height: 2rem;
+  margin-top: 0.4rem;
 }
 
 .buttonSubListContainer,
