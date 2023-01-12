@@ -123,6 +123,29 @@ function handleFocusOut(event) {
 }
 
 function fixText(textIn) {
-  console.log('pre fixText()', textIn);
-  return textIn.toUpperCase();
+//  console.log('pre fixText()', textIn);
+  //  return textIn.toUpperCase();
+  return fixCaptioning(textIn);
+}
+
+function fixCaptioning(textIn) {
+  const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
+  let strArray = textIn.split('.');
+  // console.log('bef\n', strArray);
+  for (let i = 0, count = strArray.length; i < count; ++i) {
+    let str = strArray[i];
+    let foundIndex = -1;
+    for (let j = 0, jCount =str.length; j < jCount; ++j) {
+      let letter = str.charAt(j);
+      if (!whiteSpaceArray.includes(letter)) {
+        foundIndex = j;
+        break;
+      }
+    }
+    if (foundIndex > -1) {
+      strArray[i] =  str.substring(0, foundIndex) +
+      str.charAt(foundIndex).toUpperCase() + str.slice(foundIndex+1);
+    }
+  }
+  return strArray.join('.');
 }
