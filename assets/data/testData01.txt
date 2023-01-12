@@ -14,3 +14,12 @@ and this one has elipses...then another part.  so there you go.
 hope you enjoyed it.
 i know it is interesting to see.
 so there you go.  see you later.
+
+here is a sentence with ms. and mr. in it.
+
+and here is one with a url: www.somesite.com.
+www.sgi.com begins this sentence.
+and here is one with money in it $14.69 dollars was sent to the
+U.S. overseas.
+
+more work ahead.
