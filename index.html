@@ -35,15 +35,19 @@
   </div> <!-- header -->
 
   <div class=buttonListContainer>
-    <div class="button" name="uploadButton" class=cardBarButton>upload</div>
-    <input type="file" id="fileEle" accept="text/*" style="display:none" />
     <div class=buttonSubListContainer>
-      <div class="buttonDisabled" class=cardBarButton>save</div>
-      <div class="buttonDisabled" class=cardBarButton>copy to clipboard</div>
-    </div>
-    <div class="button" name="clearButton" class=cardBarButton>clear</div>
-    <div class="button" name="aboutButton" class=cardBarButton>about</div>
-  </div>
+      <div class="button" name="uploadButton" class=cardBarButton>upload</div>
+      <input type="file" id="fileEle" accept="text/*" style="display:none" />
+      <div class="button" name="saveButton" class=cardBarButton>save</div>
+      <div class="buttonDisabled" id="clipboardButton" class=cardBarButton>
+        copy to clipboard
+      </div>
+    </div> <!-- buttonSubListContainer -->
+    <div class=buttonSubListContainer>
+      <div class="button" name="clearButton" class=cardBarButton>clear</div>
+      <div class="button" name="aboutButton" class=cardBarButton>about</div>
+    </div> <!-- buttonSubListContainer -->
+  </div> <!-- buttonListContainer -->
 
   <div class=mainContainer>
     <div class=mainContainerLeft>

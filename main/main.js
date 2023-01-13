@@ -22,6 +22,7 @@ window.addEventListener('unload', function () {});  // break back button cache
 async function main() {
   createHeader();
   createUploadButton();
+  createSaveButton();
   createClearButton();
   createAboutButton();
 
@@ -60,6 +61,7 @@ function createClearButton() {
   return clearButton;
 }
 
+
 function handleClearButton(e) {
   resultsZoneMain.innerHTML = RESULTS_DEFAULT_MSG;
   dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
@@ -82,6 +84,7 @@ function handleUploadButton(e) {
   fileEle.click();  // click it for the user
 }
 
+
 function handleFileUpload(e) {
   let fileList = e.target.files;
 
@@ -96,6 +99,25 @@ function handleFileUpload(e) {
   };
   reader.readAsText(file);
 }
+
+
+function createSaveButton() {
+  let saveButton = getFirstElementByName('saveButton');
+  saveButton.addEventListener('pointerup', handleSaveButton);
+
+  return saveButton;
+}
+
+
+function handleSaveButton(e) {
+  console.log('save button pressed');
+  let a = document.createElement('a');
+  let text = resultsZoneMain.innerHTML;
+  a.href = window.URL.createObjectURL(new Blob([text], {type: 'text/plain'}));
+  a.download = 'results.txt';
+  a.click();
+}
+
 
 function setSelectionToEnd() {
   dropZoneMain.focus();

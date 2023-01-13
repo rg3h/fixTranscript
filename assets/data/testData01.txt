@@ -1,16 +1,16 @@
 this is the first sentence and it is not capitalized. this is the
-seocond sentence.  This is the third and it is capitalized.
+second sentence.  This is the third and it is capitalized.
 
-this is the fourth sentence and there is a linebreak above. there is
+this is the fourth sentence and there is a line break above. there is
 one below.
 
 this is a sentence.       this one has a lot of     spaces too.   yep.
 
-this is a question?   this is an exclaimation! this
+this is a question?   this is an exclamation! this
 sentence wraps
 multiple lines.
 
-and this one has elipses...then another part.  so there you go.
+and this one has ellipses...then another part.  so there you go.
 hope you enjoyed it.
 i know it is interesting to see.
 so there you go.  see you later.
