@@ -1,12 +1,13 @@
 /** button.css **/
 
 :root {
-  --buttonBgColor: rgb(10, 100, 190);
-  --buttonFgColor: rgb(255, 255, 255);
-  --buttonHoverBgColor: rgb(0, 120, 240);
-  --buttonHoverFgColor: rgb(255, 255, 255);
-  --buttonHeight: 2rem;
-  --buttonWidth: 8rem;  /* not used we set button width: auto */
+  --buttonBgColor:      var(--lightBlue);
+  --buttonBgColor:      var(--blue2);
+  --buttonFgColor:      var(--almostWhite);
+  --buttonHoverBgColor: var(--blue1);
+  --buttonHoverFgColor: var(--buttonFgColor);
+  --buttonHeight:       2rem;
+  --buttonWidth:        6rem;
 }
 
 .button,

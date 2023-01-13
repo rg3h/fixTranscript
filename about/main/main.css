@@ -1,14 +1,27 @@
 /** fixTranscript/main/main.css **/
 
-:root {
-  --buttonBgColor:      rgb(  5, 140, 170);
-  --buttonBgColor:      var(--lightBlue);
-  --buttonBgColor:      var(--blue2);
-  --buttonFgColor:      var(--almostWhite);
-  --buttonHoverBgColor: var(--blue1);
-  --buttonHoverFgColor: var(--buttonFgColor);
-  --buttonHeight:       2rem;
-  --buttonWidth:        6rem;
+html {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+  animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
+  background: var(--green);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-family: notoSans, arial;
+  height: 100%;
+  margin: 0;
+  max-width: 100rem;
+  opacity: 0;
+  padding: 0;
+  width: 100%;
 }
 
 a {
@@ -35,30 +48,6 @@ h2 {
 ol {
   font-size: 1.1rem;
   margin-top: 1rem;
-}
-
-html {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-body {
-  animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
-  background: var(--green);
-  color: white;
-  display: flex;
-  flex-direction: column;
-  font-family: notoSans, arial;
-  height: 100%;
-  margin: 0;
-  max-width: 100rem;
-  opacity: 0;
-  padding: 0;
-  width: 100%;
 }
 
 /* hide the border for contenteditable attributes */

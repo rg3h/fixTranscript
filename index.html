@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="./main/main.css">
 
   <script type="module" src="main/main.js"></script>
+
 </head>
 <body>
   <div class=headerContainer>
@@ -44,31 +45,35 @@
   </div>
 
   <div class=mainContainer>
-    <div class=dropZoneContainer>
-      <div class=cardBarContainer>
-        <div class=cardBarLeft>
-        </div>
-        <div class=cardBarMiddle>
-          <div class=cardBarTitle>original text</div>
-        </div>
-        <div class=cardBarRight>
-        </div>
+    <div class=mainContainerLeft>
+      <div class=dropZoneContainer>
+        <div class=cardBarContainer>
+          <div class=cardBarLeft>
+          </div>
+          <div class=cardBarMiddle>
+            <div class=cardBarTitle>original text</div>
+          </div>
+          <div class=cardBarRight>
+          </div>
+        </div> <!-- cardBarContainer -->
+        <pre contenteditable class=dropZoneEditableContainer></pre>
       </div> <!-- cardBarContainer -->
-      <pre contenteditable class=dropZoneEditableContainer></pre>
-    </div>
+    </div> <!-- mainContainerLeft -->
 
-    <div class=resultsZoneContainer>
-      <div class=cardBarContainer>
-        <div class=cardBarLeft>
-        </div>
-        <div class=cardBarMiddle>
-          <div class=cardBarTitle>results</div>
-        </div>
-        <div class=cardBarRight>
-        </div>
+    <div class=mainContainerRight>
+      <div class=resultsZoneContainer>
+        <div class=cardBarContainer>
+          <div class=cardBarLeft>
+          </div>
+          <div class=cardBarMiddle>
+            <div class=cardBarTitle>results</div>
+          </div>
+          <div class=cardBarRight>
+          </div>
+        </div> <!-- cardBarContainer -->
+        <pre contenteditable class=resultsZoneEditableContainer></pre>
       </div> <!-- cardBarContainer -->
-      <pre contenteditable class=resultsZoneEditableContainer></pre>
-    </div>
+    </div> <!-- mainContainerRight -->
   </div> <!-- mainContainer -->
 </body>
 </html>

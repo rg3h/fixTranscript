@@ -1,26 +1,5 @@
 /** fixTranscript/main/main.css **/
 
-:root {
-  --buttonBgColor:      rgb(  5, 140, 170);
-  --buttonBgColor:      var(--lightBlue);
-  --buttonBgColor:      var(--blue2);
-  --buttonFgColor:      var(--almostWhite);
-  --buttonHoverBgColor: var(--blue1);
-  --buttonHoverFgColor: var(--buttonFgColor);
-  --buttonHeight:       2rem;
-  --buttonWidth:        6rem;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ol {
-  font-size: 1.1rem;
-  margin-top: 1rem;
-}
-
 html {
   display: flex;
   height: 100%;
@@ -36,13 +15,23 @@ body {
   color: white;
   display: flex;
   flex-direction: column;
+  flex-grow: 0;
   font-family: notoSans, arial;
-  height: 100%;
   margin: 0;
   max-width: 100rem;
   opacity: 0;
   padding: 0rem 2rem 2rem 2rem;
   width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ol {
+  font-size: 1.1rem;
+  margin-top: 1rem;
 }
 
 /* hide the border for contenteditable attributes */
@@ -75,7 +64,8 @@ body {
   gap: 1rem;
   justify-content: space-between;
   margin-bottom: 1rem;
-  min-height: 2rem;
+  max-height: 3.5rem;
+  min-height: 3.5rem;
   overflow: hidden;
   width: 100%;
 }
@@ -147,6 +137,7 @@ body {
   border-radius: var(--borderRadius);
   display: flex;
   flex-direction: row;
+  flex-grow: 0;
   gap: 1rem;
   justify-content: space-between;
   margin-bottom: 1rem;
@@ -164,10 +155,15 @@ body {
   flex-grow: 0;
   gap: 2rem;
   height: 100%;
+  max-height: calc(100% - 8rem);
   justify-content: flex-start;
-  max-width: 100%;
-  min-width: 100%;
-  width: 100%;
+  width: 100&;
+}
+
+.mainContainerLeft,
+.mainContainerRight {
+  min-width: calc(50% - 1rem);
+  max-width: calc(50% - 1rem);
 }
 
 .dropZoneContainer,
@@ -177,17 +173,17 @@ body {
   color: black;
   display: flex;
   flex-direction: column;
-  max-height: 100%;
-  min-height: 100%;
+  flex-grow: 0;
+  height: 100%;
+  min-width: 100%;
+  overflow: auto;
 }
 
 .dropZoneContainer {
   box-shadow: inset 3px 3px 5px rgba(100, 100, 100, 0.5);
-  width: 50%;
 }
 
 .resultsZoneContainer {
-  width: 50%;
 }
 
 .cardBarContainer {
