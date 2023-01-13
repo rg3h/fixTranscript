@@ -249,6 +249,8 @@ export {
 /********************* private functions ******************************/
 /*private*/ function _getNumberSuffix(number) {
   const suffixList=['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'];
-  let index = number % 10; // gives us the one's digit (e.g. 13 => 3)
+
+  // number % 10 gives us the one's digit (e.g. 13 => 3)
+  let index = number > 10 && number < 20 ? 0 : number % 10;
   return suffixList[index];
 }

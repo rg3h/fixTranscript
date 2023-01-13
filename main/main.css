@@ -64,8 +64,8 @@ ol {
   gap: 1rem;
   justify-content: space-between;
   margin-bottom: 1rem;
-  max-height: 3.5rem;
-  min-height: 3.5rem;
+  max-height: 4rem;
+  min-height: 4rem;
   overflow: hidden;
   width: 100%;
 }
