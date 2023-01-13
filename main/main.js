@@ -13,7 +13,7 @@ const NBSP = '\u00A0';
 const DROPZONE_DEFAULT_MSG = 'paste your text here ';
 const RESULTS_DEFAULT_MSG = 'results will show up here';
 
-let dropZoneMain, resultsZoneMain;
+let dropZoneMain, resultsZoneMain, fileEle;
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
@@ -21,6 +21,7 @@ window.addEventListener('unload', function () {});  // break back button cache
 // main entry point for the app
 async function main() {
   createHeader();
+  createUploadButton();
   createClearButton();
   createAboutButton();
 
@@ -65,6 +66,37 @@ function handleClearButton(e) {
   setSelectionToEnd();
 }
 
+
+function createUploadButton() {
+  let uploadButton = getFirstElementByName('uploadButton');
+  uploadButton.addEventListener('pointerup', handleUploadButton);
+
+  fileEle = document.getElementById('fileEle');
+  fileEle.addEventListener('change', handleFileUpload);
+
+  return uploadButton;
+}
+
+
+function handleUploadButton(e) {
+  fileEle.click();  // click it for the user
+}
+
+function handleFileUpload(e) {
+  let fileList = e.target.files;
+
+  // there should only be one file
+  const file = fileList[0];
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    let text = e.target.result;
+    dropZoneMain.innerHTML = text;
+    let fixedText = fixText(text);
+    resultsZoneMain.innerHTML = fixedText;
+  };
+  reader.readAsText(file);
+}
+
 function setSelectionToEnd() {
   dropZoneMain.focus();
   let selection = window.getSelection();
@@ -104,8 +136,8 @@ function handlePaste(e) {
   e.preventDefault;
 
   let text = (e.clipboardData || window.clipboardDats).getData('text');
-  text = fixText(text);
-  resultsZoneMain.innerHTML = text;
+  let fixedText = fixText(text);
+  resultsZoneMain.innerHTML = fixedText;
 }
 
 function handleFocusOut(event) {
