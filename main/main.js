@@ -2,8 +2,9 @@
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
 import {updateDateOnTheMinute}      from '../components/date/date.js';
-import {getFirstElementByClassName,
-        getFirstElementByName}      from '../components/html/html.js';
+import {
+  getElementById,
+  getFirstElementByClassName} from '../components/html/html.js';
 import {addEventListener,
         dispatchEvent,
         eventList}                  from '../components/event/event.js';
@@ -34,7 +35,7 @@ async function main() {
   dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
   setSelectionToEnd();
 
-  // dropZoneMain.addEventListener('keypress', handleDropZoneKeyPress);
+  dropZoneMain.addEventListener('keydown', handleDropZoneKeyDown);
   dropZoneMain.addEventListener('pointerdown', handleDropZonePointerDown);
   dropZoneMain.addEventListener('paste', handlePaste);
   dropZoneMain.addEventListener('focusout', handleFocusOut);
@@ -47,7 +48,7 @@ function createHeader() {
 }
 
 function createAboutButton() {
-  let aboutButton = getFirstElementByName('aboutButton');
+  let aboutButton = getElementById('aboutButton');
   aboutButton.addEventListener('pointerup', handleAboutButton);
   return aboutButton;
 }
@@ -57,7 +58,7 @@ function handleAboutButton(e) {
 }
 
 function createClearButton() {
-  let clearButton = getFirstElementByName('clearButton');
+  let clearButton = getElementById('clearButton');
   clearButton.addEventListener('pointerup', handleClearButton);
   return clearButton;
 }
@@ -71,7 +72,7 @@ function handleClearButton(e) {
 
 
 function createUploadButton() {
-  let uploadButton = getFirstElementByName('uploadButton');
+  let uploadButton = getElementById('uploadButton');
   uploadButton.addEventListener('pointerup', handleUploadButton);
 
   fileEle = document.getElementById('fileEle');
@@ -103,7 +104,7 @@ function handleFileUpload(e) {
 
 
 function createSaveButton() {
-  let saveButton = getFirstElementByName('saveButton');
+  let saveButton = getElementById('saveButton');
   saveButton.addEventListener('pointerup', handleSaveButton);
 
   return saveButton;
@@ -121,7 +122,7 @@ function handleSaveButton(e) {
 
 
 function createClipboardButton() {
-  let clipboardButton = getFirstElementByName('clipboardButton');
+  let clipboardButton = getElementById('clipboardButton');
   clipboardButton.addEventListener('pointerup', handleClipboardButton);
 
   return clipboardButton;
@@ -199,37 +200,28 @@ function setSelectionToEnd() {
 }
 
 function handleDropZonePointerDown(e) {
-  e.preventDefault;
+//  e.preventDefault();
 
+  /****
   // they clicked on the default msg so clear it
   if (dropZoneMain.innerHTML  === DROPZONE_DEFAULT_MSG) {
     dropZoneMain.innerHTML = NBSP;
     setSelectionToEnd();
   }
+*****/
 }
 
-function handleDropZoneKeyPress(e) {
-  e.preventDefault;
-
-  if (firstTime) {
-    e.target.innerHTML = '';
-    firstTime = false;
-  }
-  let name = e.key;
-  let code = e.code;
-  if (e.key === 'Enter') {
-    console.log(buffer.join(''));
-  } else {
-    console.log(e.key);
-    buffer.push(e.key);
-  }
+function handleDropZoneKeyDown(e) {
+  e.preventDefault();  // prevent keys
+  return false;
 }
 
 function handlePaste(e) {
-  e.preventDefault;
+  e.preventDefault();
 
   let text = (e.clipboardData || window.clipboardDats).getData('text');
   let fixedText = fixText(text);
+  dropZoneMain.innerHTML = text;
   resultsZoneMain.innerHTML = fixedText;
 }
 
