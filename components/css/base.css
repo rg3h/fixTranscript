@@ -1,6 +1,6 @@
 /* base.css */
 :root {
-  --almostBlack:           rgb( 25,  25,  25);
+  --almostBlack:           rgb( 50,  50,  50);
   --almostWhite:           rgb(250, 250, 250);
 
   --grey250:               rgb(250, 250, 250);
@@ -16,6 +16,7 @@
   --grey120:               rgb(120, 120, 120);
   --grey110:               rgb(110, 110, 110);
   --grey100:               rgb(100, 100, 100);
+  --grey75:                rgb( 75,  75,  75);
   --grey70:                rgb( 70,  70,  70);
   --grey60:                rgb( 60,  60,  60);
   --grey50:                rgb( 50,  50,  50);

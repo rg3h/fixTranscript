@@ -2,5 +2,5 @@
 export { getVersion };
 
 function getVersion() {
-  return '1.2.5';
+  return '2.0.0';
 }

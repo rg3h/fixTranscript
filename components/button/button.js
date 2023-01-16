@@ -1,9 +1,9 @@
 /**
  * @fileoverview button.js
  */
-import {createDiv, setFirstText} from '../html/html.js';
+import {createDiv} from '../html/html.js';
 
-export function createButton(parent, labelIn, className, fn) {
+export function createButton(parent, className, labelIn, fn) {
   let self, container, label;
   return init();
 
@@ -52,7 +52,7 @@ export function createButton(parent, labelIn, className, fn) {
 
   /*export*/ function setLabel(newLabelIn) {
     let newLabel = newLabelIn || '';
-    setFirstText(container, newLabel);
+    container.innerHTML = newLabel;
     return self;
   }
 

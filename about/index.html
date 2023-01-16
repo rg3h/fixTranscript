@@ -46,33 +46,32 @@
     periods for the sentence breaks, then use this tool to
     automatically capitalize the sentences.
     <br><br>
-    See the <a href="#future">future section</a> for more.
+    See the <a href="#nextVersions">next versions section</a> for more.
 
     <h1>Work in Progress</h1>
       <ul>
+        <li>add a status message section</li>
         <li>checkbuttons for spaces and capitalization</li>
         <li>fixing the fixText engine</li>
         <li>github link in header</li>
-        <li>preventing editing modes</li>
         <li>enable/disable buttons based on text loaded</li>
         <li>rename from fixTranscript</li>
-        <br>
-        <li>refactoring into components</li>
-        <li>event model for component-to-component communication</li>
       </ul>
 
     <h1>Known Bugs</h1>
       <ul>
+        <li>certain buttons should be disabled until text has been loaded</li>
         <li>fixText for capitalization does not handle certain edge cases</li>
       </ul>
 
-    <h1>Next Versions</h1>
+    <h1 id="nextVersions">Next Versions</h1>
     Future this tool will do more -- fix urls, load a "change
     dictionary" to allow custom replacements, mechanisms to add your
     own replacements, NLP for sentence detection, etc.
 
       <ul>
-        <drag-and-drop text files</li>
+        <li>build a cmdMgr to create an ordered list of commands to run</li>
+        <li>drag-and-drop text files</li>
         <li>url fix tool</li>
         <li>optional highlighting the changes in the resultsZone</li>
         <li>changeDictionary (e.g. 'replace my company with MyCompany')</li>

@@ -1,136 +1,123 @@
 /**
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
-import {updateDateOnTheMinute}      from '../components/date/date.js';
-import {
-  getElementById,
-  getFirstElementByClassName} from '../components/html/html.js';
-import {addEventListener,
-        dispatchEvent,
-        eventList}                  from '../components/event/event.js';
-import {getVersion}                 from '../components/version/version.js';
+import {createButton}           from '../components/button/button.js';
+import {createHeader}           from '../components/header/header.js';
+import {createDiv,
+        createElement,
+        createFileOpener,
+        createImg,
+        createPre,}             from '../components/html/html.js';
+import {updateDateOnTheMinute}  from '../components/date/date.js';
+import {getVersion}             from '../components/version/version.js';
+import {SPACE_SYMBOL}           from '../components/symbols/symbols.js';
 
-const NBSP = '\u00A0';
-const DROPZONE_DEFAULT_MSG = 'paste your text here ';
-const RESULTS_DEFAULT_MSG = 'results will show up here';
 
-let dropZoneMain, resultsZoneMain, fileEle;
+const DEFAULT_MSG = 'Use the load button or copy-paste your text here ';
+let textCard, fileEle;
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
 
 // main entry point for the app
 async function main() {
-  createHeader();
-  createUploadButton();
-  createSaveButton();
-  createClipboardButton();
-  createClearButton();
-  createAboutButton();
-
-  resultsZoneMain = getFirstElementByClassName('resultsZoneEditableContainer');
-  resultsZoneMain.innerHTML = RESULTS_DEFAULT_MSG;
-
-  dropZoneMain = getFirstElementByClassName('dropZoneEditableContainer');
-  dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
+  let parent = document.body;
+  createTheHeader(parent);
+  createTheButtonList(parent);
+  textCard = createTheTextCard(parent);
   setSelectionToEnd();
-
-  dropZoneMain.addEventListener('keydown', handleDropZoneKeyDown);
-  dropZoneMain.addEventListener('pointerdown', handleDropZonePointerDown);
-  dropZoneMain.addEventListener('paste', handlePaste);
-  dropZoneMain.addEventListener('focusout', handleFocusOut);
 }
 
-function createHeader() {
-  getFirstElementByClassName('logoVersion').innerHTML = getVersion();
-  let dateEle = getFirstElementByClassName('headerDate');
-  updateDateOnTheMinute(dateEle, 'MMMM DTH, YYYY HH:NN AMPM');
+
+function createTheHeader(parent) {
+  let header = createHeader({parent:parent, date:'MMMM DTH, YYYY HH:NN AMPM'});
+  let left = header.getLeftContainer();
+  createDiv(left, 'mainHeaderTitle', 'fixTranscript');
+  createDiv(left, 'mainHeaderVersion', getVersion());
+  let underConstructionUrl = './assets/images/underConstruction28.png';
+  createImg(left, 'mainHeaderStatusBadge', underConstructionUrl);
+
+  return header;
 }
 
-function createAboutButton() {
-  let aboutButton = getElementById('aboutButton');
-  aboutButton.addEventListener('pointerup', handleAboutButton);
-  return aboutButton;
+
+function createTheButtonList(parent) {
+  let buttonListContainer = createDiv(parent, 'mainButtonListContainer');
+  let subContainer =createDiv(buttonListContainer,'mainButtonSubListContainer');
+
+  createButton(subContainer, '', 'load', handleLoadFileButton);
+  fileEle = createFileOpener({accept:'text/*',
+                              multiple:false,
+                              cb:handleLoadFile});
+
+  createButton(subContainer, '', 'save', handleSaveButton);
+  createButton(subContainer, '', 'copy to clipboard', handleClipboardButton);
+
+  createButton(buttonListContainer,'mainProcessButton', 'process text',
+               handleProcessTextButton);
+
+  subContainer = createDiv(buttonListContainer, 'mainButtonSubListContainer');
+  createButton(subContainer, '', 'clear', handleClearButton);
+  createButton(subContainer, '', 'about', handleAboutButton);
+
+  return buttonListContainer;
 }
+
+
+function createTheTextCard(parent) {
+  let container = createPre(parent, 'mainTextCardContainer', DEFAULT_MSG);
+  container.setAttribute('contenteditable', true);
+  container.addEventListener('keydown', handleDropZoneKeyDown);
+  // container.addEventListener('pointerdown', handleDropZonePointerDown);
+  container.addEventListener('paste', handlePaste);
+  // container.addEventListener('focusout', handleFocusOut);
+  return container;
+}
+
 
 function handleAboutButton(e) {
   window.location.href = './about/index.html';
 }
 
-function createClearButton() {
-  let clearButton = getElementById('clearButton');
-  clearButton.addEventListener('pointerup', handleClearButton);
-  return clearButton;
-}
-
 
 function handleClearButton(e) {
-  resultsZoneMain.innerHTML = RESULTS_DEFAULT_MSG;
-  dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
+  textCard.innerHTML = DEFAULT_MSG;
   setSelectionToEnd();
 }
 
 
-function createUploadButton() {
-  let uploadButton = getElementById('uploadButton');
-  uploadButton.addEventListener('pointerup', handleUploadButton);
-
-  fileEle = document.getElementById('fileEle');
-  fileEle.addEventListener('change', handleFileUpload);
-
-  return uploadButton;
-}
-
-
-function handleUploadButton(e) {
+function handleLoadFileButton(e) {
+  console.log('load clicked', fileEle);
   fileEle.click();  // click it for the user
 }
 
 
-function handleFileUpload(e) {
+function handleLoadFile(e) {
+  console.log('in handleLoadFile');
   let fileList = e.target.files;
-
-  // there should only be one file
-  const file = fileList[0];
+  const file = fileList[0]; // there should only be one file
   const reader = new FileReader();
-  reader.onload = (e) => {
-    let text = e.target.result;
-    dropZoneMain.innerHTML = text;
-    let fixedText = fixText(text);
-    resultsZoneMain.innerHTML = fixedText;
-  };
+  reader.onload = (e) => { textCard.innerHTML = e.target.result; };
   reader.readAsText(file);
 }
 
 
-function createSaveButton() {
-  let saveButton = getElementById('saveButton');
-  saveButton.addEventListener('pointerup', handleSaveButton);
-
-  return saveButton;
+function handleProcessTextButton(e) {
+  textCard.innerHTML = fixText(textCard.innerHTML);
 }
 
 
 function handleSaveButton(e) {
-  console.log('save button pressed');
+  let text = textCard.innerHTML;
   let a = document.createElement('a');
-  let text = resultsZoneMain.innerHTML;
   a.href = window.URL.createObjectURL(new Blob([text], {type: 'text/plain'}));
   a.download = 'results.txt';
   a.click();
 }
 
 
-function createClipboardButton() {
-  let clipboardButton = getElementById('clipboardButton');
-  clipboardButton.addEventListener('pointerup', handleClipboardButton);
-
-  return clipboardButton;
-}
-
-
 async function handleClipboardButton(e) {
-  let text = resultsZoneMain.innerHTML;
+  let text = textCard.innerHTML;
   // navigator.clipboard.writeText(text);
   try {
     await copyToClipboard(text);
@@ -191,59 +178,61 @@ async function copyToClipboard(text) {
   });
 }
 
+
 function setSelectionToEnd() {
-  dropZoneMain.focus();
+  textCard.focus();
   let selection = window.getSelection();
-  let firstChild = dropZoneMain.firstChild;
+  let firstChild = textCard.firstChild;
   selection.collapse(firstChild, firstChild.length);  // end of the line
   // selection.modify('extend', 'forward', 'line');  // selects the entire line
 }
 
-function handleDropZonePointerDown(e) {
-//  e.preventDefault();
 
-  /****
+function handleDropZonePointerDown(e) {
   // they clicked on the default msg so clear it
-  if (dropZoneMain.innerHTML  === DROPZONE_DEFAULT_MSG) {
-    dropZoneMain.innerHTML = NBSP;
+  if (textCard.innerHTML  === DEFAULT_MSG) {
+    textCard.innerHTML = SPACE_SYMBOL;
     setSelectionToEnd();
   }
-*****/
 }
+
 
 function handleDropZoneKeyDown(e) {
   e.preventDefault();  // prevent keys
   return false;
 }
 
+
 function handlePaste(e) {
   e.preventDefault();
-
   let text = (e.clipboardData || window.clipboardDats).getData('text');
-  let fixedText = fixText(text);
-  dropZoneMain.innerHTML = text;
-  resultsZoneMain.innerHTML = fixedText;
+  textCard.innerHTML = text;
 }
+
 
 function handleFocusOut(event) {
   // if focus is still in the element do nothing
-  if (dropZoneMain.contains(event.relatedTarget)) {
+  if (textCard.contains(event.relatedTarget)) {
     return;
   }
 
   // if the currentMsg is empty, then set it to the default message
-  let currentMsg = dropZoneMain.innerHTML;
-  if (!currentMsg || currentMsg.length < 1 || currentMsg === '&nbsp;') {
-    dropZoneMain.innerHTML = DROPZONE_DEFAULT_MSG;
+  let text = textCard.innerHTML;
+  console.log('focusOut textCard', textCard);
+  if (!text || text.length < 1 || text === '&nbsp;') {
+    textCard.innerHTML = DEFAULT_MSG;
     setSelectionToEnd();
   }
 }
 
+
 function fixText(textIn) {
-//  console.log('pre fixText()', textIn);
-  //  return textIn.toUpperCase();
-  return fixCaptioning(textIn);
+  let text = textIn;
+  // text = text.toUpperCase();
+  text = fixCaptioning(text);
+  return text;
 }
+
 
 function fixCaptioning(textIn) {
   const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
