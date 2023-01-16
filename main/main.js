@@ -87,13 +87,11 @@ function handleClearButton(e) {
 
 
 function handleLoadFileButton(e) {
-  console.log('load clicked', fileEle);
   fileEle.click();  // click it for the user
 }
 
 
 function handleLoadFile(e) {
-  console.log('in handleLoadFile');
   let fileList = e.target.files;
   const file = fileList[0]; // there should only be one file
   const reader = new FileReader();
