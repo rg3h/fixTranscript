@@ -20,9 +20,12 @@ body {
   display: flex;
   flex-direction: column;
   flex-grow: 0;
+  flex-shrink: 0;
   font-family: notoSans, arial;
+  height: 100%;
   margin: 0;
-  max-width: 100rem;
+  max-height: 100%;
+  max-width: 80rem;
   opacity: 0;
   padding: 0rem 2rem 2rem 2rem;
   width: 100%;
@@ -78,24 +81,39 @@ ol {
   margin-top: 0.4rem;
 }
 
-.mainButtonSubListContainer,
-.mainButtonListContainer {
+.mainContainer {
   border-radius: var(--borderRadius);
-  /* border: solid 1px rgb(190, 225, 180); */
   display: flex;
-  flex-direction: row;
   flex-grow: 0;
+  flex-shrink: 0;
   gap: 1rem;
-  justify-content: space-between;
+  height: calc(100% - 4rem);
   margin-top: 1rem;
-  /* padding: 0.5rem 1rem 0.5rem 1rem; */
+  width: calc(100% - 12rem);
+}
+
+.mainButtonListContainer {
+  background: white;
+  border-radius: var(--borderRadius);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  gap: 3rem;
+  height: 100%;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  width: 11rem;
 }
 
 .mainButtonSubListContainer {
-  border: none;
+  border-radius: var(--borderRadius);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
   gap: 2rem;
-  margin: 0;
-  padding: 0;
+  justify-content: space-between;
 }
 
 .mainProcessButton {
@@ -108,24 +126,22 @@ ol {
 
 .mainTextCardContainer {
   background: white;
-  border-radius: 1rem;
+  border-radius: var(--borderRadius);
   box-shadow: inset 3px 3px 5px rgba(100, 100, 100, 0.5);
   color: black;
   display: flex;
   flex-direction: row;
   flex-grow: 0;
+  flex-shrink: 0;
   gap: 2rem;
   justify-content: flex-start;
-  margin-top: 3rem;
   height: 100%;
   overflow-y: scroll;
-  padding: 1rem;
+  padding: 2rem;
   width: 100%;
 }
 
 .mainTextCardContainer::-webkit-scrollbar {
-  border-bottom-right-radius: 1rem;
-  border-top-right-radius: 1rem;
   width: var(--scrollWidth);
 }
 

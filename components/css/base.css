@@ -60,7 +60,7 @@
 
   --borderColor:           var(--grey200);
   --border:                solid 1px var(--borderColor);
-  --borderRadius:          10px;
+  --borderRadius:          1rem;
   --borderTransparent:      solid 1px transparent;
 
   --fontFamily:            notoSans, Georgia;      /* georgia so can see bug */

@@ -19,12 +19,12 @@ let textCard, fileEle;
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
 
-// main entry point for the app
 async function main() {
   let parent = document.body;
   createTheHeader(parent);
-  createTheButtonList(parent);
-  textCard = createTheTextCard(parent);
+  let mainContainer = createDiv(parent, 'mainContainer');
+  createTheButtonList(mainContainer);
+  textCard = createTheTextCard(mainContainer);
   setSelectionToEnd();
 }
 
