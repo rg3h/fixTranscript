@@ -1,9 +1,15 @@
 /** fixTranscript/main/main.css **/
 
 :root {
+  --titleAngle:  -5deg;
   --bgColor:     var(--lightGreen2);
   --fgColor:     var(--darkGreen);
   --scrollWidth: 1.25rem;
+}
+
+@keyframes rotateDownAnim {
+    0% { transform: rotate(var(--titleAngle)); }
+  100% { transform: rotate(0deg); }
 }
 
 html {
@@ -66,8 +72,10 @@ ol {
 }
 
 .mainHeaderTitle {
+  animation: rotateDownAnim 0.5s ease-in-out 2s forwards;
   font-family: lobsterTwo, notoSansExtraLight, arial;
   font-size: 3rem;
+  transform: rotate(var(--titleAngle));
 }
 
 .mainHeaderVersion {
