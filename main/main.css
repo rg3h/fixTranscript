@@ -1,7 +1,9 @@
 /** fixTranscript/main/main.css **/
 
 :root {
-  --scrollWidth:           1.25rem;
+  --bgColor:     var(--lightGreen2);
+  --fgColor:     var(--darkGreen);
+  --scrollWidth: 1.25rem;
 }
 
 html {
@@ -15,8 +17,8 @@ html {
 
 body {
   animation: fadeUpAnim 1s ease-in-out 0.2s forwards;
-  background: rgb(190, 225, 195);
-  color: var(--darkGreen);
+  background: var(--bgColor);
+  color: var(--fgColor);
   display: flex;
   flex-direction: column;
   flex-grow: 0;
@@ -87,8 +89,8 @@ ol {
   flex-grow: 0;
   flex-shrink: 0;
   gap: 1rem;
-  height: calc(100% - 4rem);
-  margin-top: 1rem;
+  height: calc(100% - 6rem);
+  margin-top: 2rem;
   width: calc(100% - 12rem);
 }
 
@@ -128,51 +130,57 @@ ol {
   background: var(--lightGreen);
 }
 
-.mainTextCardContainer {
+.mainTextCardOuterContainer {
+  background: red;
   background: white;
   border-radius: var(--borderRadius);
   box-shadow: inset 3px 3px 5px rgba(100, 100, 100, 0.5);
-  color: black;
-  display: flex;
-  flex-direction: row;
   flex-grow: 0;
   flex-shrink: 0;
-  gap: 2rem;
-  justify-content: flex-start;
   height: 100%;
   overflow-y: scroll;
   padding: 2rem;
   width: 100%;
 }
 
-.mainTextCardContainer::-webkit-scrollbar {
+.mainTextCardContainer {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 100%;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+
+.mainTextCardOuterContainer::-webkit-scrollbar {
   width: var(--scrollWidth);
 }
 
-.mainTextCardContainer::-webkit-scrollbar-track {
+.mainTextCardOuterContainer::-webkit-scrollbar-track {
   background: rgb(190, 225, 195);
   border-bottom-right-radius: 1rem;
   border-top-right-radius: 1rem;
   box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.3);
-  cursor: pointer;
 }
 
-.mainTextCardContainer::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
+.mainTextCardOuterContainer::-webkit-scrollbar-thumb {
   background: rgb(120, 180, 130);
+  border-radius: 1rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.3);
 }
 
-.mainTextCardContainer::-webkit-scrollbar-corner {
+.mainTextCardOuterContainer::-webkit-scrollbar-corner {
   display: none;
 }
 
 
-.mainTextCardContainer::-webkit-resizer {
+.mainTextCardOuterContainer::-webkit-resizer {
   /* background: red; */
 }
 
-.mainTextCardContainer::-webkit-scrollbar-track-piece {
+.mainTextCardOuterContainer::-webkit-scrollbar-track-piece {
   /* background: red; */
-  cursor: pointer;
 }

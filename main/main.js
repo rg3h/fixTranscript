@@ -45,7 +45,11 @@ function createTheHeader(parent) {
 
 
 function createTheTextCard(parent) {
-  let container = createPre(parent, 'mainTextCardContainer', DEFAULT_MSG);
+  // sadly we have to create an outer container so that the cursor pointer
+  // changes correctly over the scrollbar due to an ancient bug in chrome
+
+  let oc = createDiv(parent, 'mainTextCardOuterContainer');
+  let container = createPre(oc, 'mainTextCardContainer', DEFAULT_MSG);
   container.setAttribute('contenteditable', true);
   container.addEventListener('keydown', handleDropZoneKeyDown);
   // container.addEventListener('pointerdown', handleDropZonePointerDown);
