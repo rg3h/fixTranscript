@@ -14,7 +14,7 @@ import {SPACE_SYMBOL}           from '../components/symbols/symbols.js';
 
 
 const DEFAULT_MSG = 'Use the load button or copy-paste your text here ';
-let buttonList, textCard;
+let buttonList, textCard, allowPasteFlag;
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
@@ -28,6 +28,7 @@ async function main() {
   buttonList.setLoadActive();
 
   textCard = createTheTextCard(mainContainer);
+
   setSelectionToEnd();
 }
 
@@ -66,8 +67,9 @@ function handleAboutButton(e) {
 
 function handleClearButton(e) {
   textCard.innerHTML = DEFAULT_MSG;
-  setSelectionToEnd();
   buttonList.setLoadActive();
+  textCard.setAttribute('contenteditable', true);
+  setSelectionToEnd();
 }
 
 function handleLoadFileButton(e) {
@@ -84,6 +86,7 @@ function handleLoadFile(e) {
   reader.onload = (e) => {
     textCard.innerHTML = e.target.result;
     buttonList.setProcessActive();
+    textCard.setAttribute('contenteditable', false);
   };
 
   reader.readAsText(file);
@@ -93,6 +96,7 @@ function handleLoadFile(e) {
 function handleProcessTextButton(e) {
   textCard.innerHTML = fixText(textCard.innerHTML);
   buttonList.setSaveActive();
+  textCard.setAttribute('contenteditable', false);
 }
 
 
@@ -194,9 +198,14 @@ function handleDropZoneKeyDown(e) {
 
 function handlePaste(e) {
   e.preventDefault();
+  if (!allowPasteFlag) {
+    return;
+  }
+
   let text = (e.clipboardData || window.clipboardDats).getData('text');
   textCard.innerHTML = text;
   buttonList.setProcessActive();
+  textCard.setAttribute('contenteditable', false);
 }
 
 
@@ -208,7 +217,6 @@ function handleFocusOut(event) {
 
   // if the currentMsg is empty, then set it to the default message
   let text = textCard.innerHTML;
-  console.log('focusOut textCard', textCard);
   if (!text || text.length < 1 || text === '&nbsp;') {
     textCard.innerHTML = DEFAULT_MSG;
     setSelectionToEnd();
@@ -227,7 +235,6 @@ function fixText(textIn) {
 function fixCaptioning(textIn) {
   const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
   let strArray = textIn.split('.');
-  // console.log('bef\n', strArray);
   for (let i = 0, count = strArray.length; i < count; ++i) {
     let str = strArray[i];
     let foundIndex = -1;
@@ -287,6 +294,7 @@ function createTheButtonList(parent) {
   /*export*/ function setLoadActive() {
     _disableAllButtons();
     loadButton.enable();
+    allowPasteFlag = true;
   }
 
   /*export*/ function setProcessActive() {
@@ -305,6 +313,7 @@ function createTheButtonList(parent) {
 
   /******************** private functions *****************************/
   /*private*/ function _disableAllButtons() {
+    allowPasteFlag = false;
     loadButton.disable();
     processButton.disable();
     saveButton.disable();
