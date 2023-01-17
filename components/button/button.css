@@ -1,13 +1,14 @@
 /** button.css **/
 
 :root {
-  --buttonBgColor:      var(--lightBlue);
-  --buttonBgColor:      var(--blue2);
-  --buttonFgColor:      var(--almostWhite);
-  --buttonHoverBgColor: var(--blue1);
-  --buttonHoverFgColor: var(--buttonFgColor);
-  --buttonHeight:       2rem;
-  --buttonWidth:        6rem;
+  --buttonBgColor:       var(--lightBlue);
+  --buttonBgColor:       var(--blue2);
+  --buttonFgColor:       var(--almostWhite);
+  --buttonHoverBgColor:  var(--blue1);
+  --buttonHoverFgColor:  var(--buttonFgColor);
+  --buttonHeight:        2rem;
+  --buttonWidth:         6rem;
+  --toggleButtonOnColor: var(--darkGreen);
 }
 
 .button,
@@ -69,4 +70,16 @@
 
 .backButton:hover {
   box-shadow: var(--boxShadowNeuSmall);
+}
+
+.toggleButton {
+  justify-content: flex-start;
+}
+
+.toggleButtonOn {
+  background: var(--toggleButtonOnColor);
+}
+
+.toggleButtonCheckBox {
+  margin-right: 0.5rem;
 }

@@ -50,9 +50,9 @@ export function createButton(parent, className, labelIn, fn) {
     return self;
   }
 
-  /*export*/ function setLabel(newLabelIn) {
-    let newLabel = newLabelIn || '';
-    container.innerHTML = newLabel;
+  /*export*/ function setLabel(newLabel) {
+    label = newLabel || '';
+    container.innerHTML = label;
     return self;
   }
 

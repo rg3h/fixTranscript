@@ -2,6 +2,7 @@
  * @fileoverview fixTranscript/main/main.js landing page code.
  */
 import {createButton}           from '../components/button/button.js';
+import {createToggleButton}     from '../components/button/toggleButton.js';
 import {createHeader}           from '../components/header/header.js';
 import {createAnchor,
         createDiv,
@@ -95,7 +96,6 @@ function handleLoadFile(e) {
 
   reader.readAsText(file);
 }
-
 
 function handleProcessTextButton(e) {
   textCard.innerHTML = fixText(textCard.innerHTML);
@@ -260,20 +260,28 @@ function fixCaptioning(textIn) {
 
 function createTheButtonList(parent) {
   let self, container,
-      loadButton, processButton, saveButton, clipboardButton, clearButton;
+      loadButton, processButton, saveButton, clipboardButton, clearButton,
+      capitalizeButton, lowercaseUrlsButton;
+
   return init();
 
   function init() {
     let container = createDiv(parent, 'mainButtonListContainer');
 
     createButton(container, '', 'about', handleAboutButton);
-    createDiv(container, 'mainButtonListGap');
 
+    createDiv(container, 'mainButtonListGap');
     loadButton = createButton(container, '', 'load', handleLoadFileButton);
 
+    createDiv(container, 'mainButtonListGap');
+    capitalizeButton = createToggleButton(container, '', 'capitalize',
+                                          handleCapitalizeButton, true);
+    lowercaseUrlsButton = createToggleButton(container, '', 'lowercase urls',
+                                             handleLowercaseUrlsButton, true);
     processButton = createButton(container,'', 'process text',
                                  handleProcessTextButton);
 
+    createDiv(container, 'mainButtonListGap');
     saveButton = createButton(container, '', 'save', handleSaveButton);
     clipboardButton = createButton(container, '', 'copy to clipboard',
                                    handleClipboardButton);
@@ -291,6 +299,17 @@ function createTheButtonList(parent) {
     };
   }
 
+
+  /*export*/ function handleCapitalizeButton() {
+    capitalizeButton.toggle();
+  }
+
+
+  /*export*/ function handleLowercaseUrlsButton() {
+    lowercaseUrlsButton.toggle();
+  }
+
+
   /*export*/ function getContainer() {
     return container;
   }
@@ -303,6 +322,8 @@ function createTheButtonList(parent) {
 
   /*export*/ function setProcessActive() {
     _disableAllButtons();
+    capitalizeButton.enable();
+    lowercaseUrlsButton.enable();
     processButton.enable();
     clearButton.enable();
   }
@@ -319,6 +340,8 @@ function createTheButtonList(parent) {
   /*private*/ function _disableAllButtons() {
     allowPasteFlag = false;
     loadButton.disable();
+    capitalizeButton.disable();
+    lowercaseUrlsButton.disable();
     processButton.disable();
     saveButton.disable();
     clipboardButton.disable();

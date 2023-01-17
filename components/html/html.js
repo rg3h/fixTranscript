@@ -2,15 +2,16 @@
 
 export {
   addClassName,          // add a classname or list (as a string or array)
+  appendFirst,           // append the element as the first child of the parent
   createAnchor,          // creates an anchor with an optional class and text
   createBreak,           // creates a <br>
   createDiv,             // creates a div with an optional class and text
   createElement,         // creates an element (e.g. 'div', 'meta')
-  createFileOpener,     // creates input type=file with handler
-  createImg,            // creates an image with an optional class and text
-  createPre,            // creates a pre with an optional class and text
+  createFileOpener,      // creates input type=file with handler
+  createImg,             // creates an image with an optional class and text
+  createPre,             // creates a pre with an optional class and text
   getElementById,        // get the html element by id
-  getFirstElementByClassName,  // find the 1st element with the given className
+  getFirstElementByClassName, // find the 1st element with the given className
   getFirstElementByName, // find the 1st element with the given name
 };
 
@@ -39,6 +40,11 @@ export {
   }
 }
 
+/*export*/ function appendFirst(parent, element) {
+  if (parent) {
+    parent.insertBefore(element, parent.firstChild);
+  }
+}
 
 /*export*/ function createAnchor(parent, opt_classNameOrList, ref, htmlString) {
   let element = createElement('a', parent, opt_classNameOrList);
