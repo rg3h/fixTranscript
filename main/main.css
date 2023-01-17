@@ -85,10 +85,20 @@ ol {
 }
 
 .mainHeaderStatusBadge {
-  box-shadow: var(--boxShadow);
   height: 2rem;
   margin-left: 2rem;
   margin-top: 0.4rem;
+}
+
+
+.mainImageLink {
+  filter: drop-shadow(3px 3px 3px rgba(100, 100, 100, 0.5));
+  height: 2rem;
+  margin-left: 2rem;
+}
+
+.mainImageLink:hover {
+  filter: drop-shadow(6px 6px 6px rgba(100, 100, 100, 0.5));
 }
 
 .mainContainer {

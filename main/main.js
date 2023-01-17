@@ -3,7 +3,8 @@
  */
 import {createButton}           from '../components/button/button.js';
 import {createHeader}           from '../components/header/header.js';
-import {createDiv,
+import {createAnchor,
+        createDiv,
         createElement,
         createFileOpener,
         createImg,
@@ -40,6 +41,9 @@ function createTheHeader(parent) {
   createDiv(left, 'mainHeaderVersion', getVersion());
   let underConstructionUrl = './assets/images/underConstruction28.png';
   createImg(left, 'mainHeaderStatusBadge', underConstructionUrl);
+
+  let anchor = createAnchor(left, '', 'https://github.com/rg3h/fixTranscript');
+  createImg(anchor, 'mainImageLink', './assets/images/github.png');
 
   return header;
 }

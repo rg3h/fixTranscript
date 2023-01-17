@@ -2,6 +2,7 @@
 
 export {
   addClassName,          // add a classname or list (as a string or array)
+  createAnchor,          // creates an anchor with an optional class and text
   createBreak,           // creates a <br>
   createDiv,             // creates a div with an optional class and text
   createElement,         // creates an element (e.g. 'div', 'meta')
@@ -36,6 +37,16 @@ export {
   if (newClassList.length > 0) {
     element.classList.add(...newClassList);
   }
+}
+
+
+/*export*/ function createAnchor(parent, opt_classNameOrList, ref, htmlString) {
+  let element = createElement('a', parent, opt_classNameOrList);
+  element.setAttribute('href', ref);
+  if (htmlString) {
+    element.innerHTML = htmlString;
+  }
+  return element;
 }
 
 
