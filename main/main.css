@@ -99,11 +99,15 @@ ol {
   flex-direction: column;
   flex-grow: 0;
   flex-shrink: 0;
-  gap: 3rem;
+  gap: 2rem;
   height: 100%;
   justify-content: flex-start;
   padding: 0.5rem;
   width: 11rem;
+}
+
+.mainButtonListGap {
+  height: 0.5rem;
 }
 
 .mainButtonSubListContainer {

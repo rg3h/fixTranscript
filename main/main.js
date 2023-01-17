@@ -14,7 +14,7 @@ import {SPACE_SYMBOL}           from '../components/symbols/symbols.js';
 
 
 const DEFAULT_MSG = 'Use the load button or copy-paste your text here ';
-let textCard, fileEle;
+let buttonList, textCard;
 
 window.addEventListener('load', main);
 window.addEventListener('unload', function () {});  // break back button cache
@@ -23,7 +23,10 @@ async function main() {
   let parent = document.body;
   createTheHeader(parent);
   let mainContainer = createDiv(parent, 'mainContainer');
-  createTheButtonList(mainContainer);
+
+  buttonList = createTheButtonList(mainContainer);
+  buttonList.setLoadActive();
+
   textCard = createTheTextCard(mainContainer);
   setSelectionToEnd();
 }
@@ -38,29 +41,6 @@ function createTheHeader(parent) {
   createImg(left, 'mainHeaderStatusBadge', underConstructionUrl);
 
   return header;
-}
-
-
-function createTheButtonList(parent) {
-  let buttonListContainer = createDiv(parent, 'mainButtonListContainer');
-  let subContainer =createDiv(buttonListContainer,'mainButtonSubListContainer');
-
-  createButton(subContainer, '', 'load', handleLoadFileButton);
-  fileEle = createFileOpener({accept:'text/*',
-                              multiple:false,
-                              cb:handleLoadFile});
-
-  createButton(subContainer, '', 'save', handleSaveButton);
-  createButton(subContainer, '', 'copy to clipboard', handleClipboardButton);
-
-  createButton(buttonListContainer,'mainProcessButton', 'process text',
-               handleProcessTextButton);
-
-  subContainer = createDiv(buttonListContainer, 'mainButtonSubListContainer');
-  createButton(subContainer, '', 'clear', handleClearButton);
-  createButton(subContainer, '', 'about', handleAboutButton);
-
-  return buttonListContainer;
 }
 
 
@@ -83,10 +63,12 @@ function handleAboutButton(e) {
 function handleClearButton(e) {
   textCard.innerHTML = DEFAULT_MSG;
   setSelectionToEnd();
+  buttonList.setLoadActive();
 }
 
-
 function handleLoadFileButton(e) {
+  let fileEle = createFileOpener({accept:'text/*',
+                                  multiple:false, cb:handleLoadFile});
   fileEle.click();  // click it for the user
 }
 
@@ -95,17 +77,22 @@ function handleLoadFile(e) {
   let fileList = e.target.files;
   const file = fileList[0]; // there should only be one file
   const reader = new FileReader();
-  reader.onload = (e) => { textCard.innerHTML = e.target.result; };
+  reader.onload = (e) => {
+    textCard.innerHTML = e.target.result;
+    buttonList.setProcessActive();
+  };
+
   reader.readAsText(file);
 }
 
 
 function handleProcessTextButton(e) {
   textCard.innerHTML = fixText(textCard.innerHTML);
+  buttonList.setSaveActive();
 }
 
 
-function handleSaveButton(e) {
+async function handleSaveButton(e) {
   let text = textCard.innerHTML;
   let a = document.createElement('a');
   a.href = window.URL.createObjectURL(new Blob([text], {type: 'text/plain'}));
@@ -205,6 +192,7 @@ function handlePaste(e) {
   e.preventDefault();
   let text = (e.clipboardData || window.clipboardDats).getData('text');
   textCard.innerHTML = text;
+  buttonList.setProcessActive();
 }
 
 
@@ -252,4 +240,74 @@ function fixCaptioning(textIn) {
     }
   }
   return strArray.join('.');
+}
+
+
+function createTheButtonList(parent) {
+  let self, container,
+      loadButton, processButton, saveButton, clipboardButton, clearButton;
+  return init();
+
+  function init() {
+    let container = createDiv(parent, 'mainButtonListContainer');
+
+    createButton(container, '', 'about', handleAboutButton);
+    createDiv(container, 'mainButtonListGap');
+
+    loadButton = createButton(container, '', 'load', handleLoadFileButton);
+
+    processButton = createButton(container,'', 'process text',
+                                 handleProcessTextButton);
+
+    saveButton = createButton(container, '', 'save', handleSaveButton);
+    clipboardButton = createButton(container, '', 'copy to clipboard',
+                                   handleClipboardButton);
+
+    createDiv(container, 'mainButtonListGap');
+    clearButton = createButton(container, '', 'clear', handleClearButton);
+
+    _disableAllButtons();
+
+    return self = {
+      getContainer,
+      setLoadActive,
+      setProcessActive,
+      setSaveActive,
+    };
+  }
+
+  /*export*/ function getContainer() {
+    return container;
+  }
+
+  /*export*/ function setLoadActive() {
+    _disableAllButtons();
+    loadButton.enable();
+  }
+
+  /*export*/ function setProcessActive() {
+    _disableAllButtons();
+    processButton.enable();
+    clearButton.enable();
+  }
+
+  /*export*/ function setSaveActive() {
+    _disableAllButtons();
+    saveButton.enable();
+    clipboardButton.enable();
+    clearButton.enable();
+  }
+
+
+  /******************** private functions *****************************/
+  /*private*/ function _disableAllButtons() {
+    loadButton.disable();
+    processButton.disable();
+    saveButton.disable();
+    clipboardButton.disable();
+    clearButton.disable();
+    return self;
+  }
+
+  return container;
 }
