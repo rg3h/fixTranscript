@@ -58,7 +58,7 @@ function createTheTextCard(parent) {
   let oc = createDiv(parent, 'mainTextCardOuterContainer');
   let container = createPre(oc, 'mainTextCardContainer', DEFAULT_MSG);
   container.setAttribute('contenteditable', true);
-  container.addEventListener('keydown', handleDropZoneKeyDown);
+  // container.addEventListener('keydown', handleDropZoneKeyDown);
   // container.addEventListener('pointerdown', handleDropZonePointerDown);
   container.addEventListener('paste', handlePaste);
   // container.addEventListener('focusout', handleFocusOut);
@@ -78,7 +78,7 @@ function handleLoadFile(e) {
   reader.onload = (e) => {
     textCard.innerHTML = e.target.result;
     buttonList.setProcessActive();
-    textCard.setAttribute('contenteditable', false);
+    // textCard.setAttribute('contenteditable', false);
   };
 
   reader.readAsText(file);
@@ -168,7 +168,7 @@ function handlePaste(e) {
   let text = (e.clipboardData || window.clipboardDats).getData('text');
   textCard.innerHTML = text;
   buttonList.setProcessActive();
-  textCard.setAttribute('contenteditable', false);
+  // textCard.setAttribute('contenteditable', false);
 }
 
 
@@ -388,7 +388,7 @@ function createTheButtonList(parent) {
   /*private*/ function _handleProcessButton(e) {
     textCard.innerHTML = fixText(textCard.innerHTML, self);
     setSaveActive();
-    textCard.setAttribute('contenteditable', false);
+    // textCard.setAttribute('contenteditable', false);
   }
 
 
@@ -419,7 +419,7 @@ function createTheButtonList(parent) {
   /*private*/ function _handleClearButton(e) {
     textCard.innerHTML = DEFAULT_MSG;
     buttonList.setLoadActive();
-    textCard.setAttribute('contenteditable', true);
+    // textCard.setAttribute('contenteditable', true);
     setSelectionToEnd();
   }
 
