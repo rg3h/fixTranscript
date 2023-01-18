@@ -16,8 +16,8 @@ import {SPACE_SYMBOL}           from '../components/symbols/symbols.js';
 
 
 const DEFAULT_MSG = 'Use the load file button or paste your text here ';
-let textCard, allowPasteFlag, loadButton, capitalizeButton,
-    lowerCaseUrlsButton, saveButton, clipboardButton, clearButton;
+let textCard, loadButton, capitalizeButton, saveButton,
+    clipboardButton, clearButton;
 
 
 window.addEventListener('load', main);
@@ -29,7 +29,7 @@ async function main() {
   let mainContainer = createDiv(parent, 'mainContainer');
 
   createTheButtonList(mainContainer);
-  // setLoadActive();
+  setLoadActive();
 
   textCard = createTheTextCard(mainContainer);
   setSelectionToEnd();
@@ -59,9 +59,6 @@ function createTheButtonList(parent) {
   capitalizeButton = createButton(container, '', 'capitalize',
                                   handleCapitalizeButton);
 
-  lowerCaseUrlsButton = createButton(container, '', 'lowercase urls',
-                                     handleLowerCaseUrlsButton);
-
   createDiv(container, 'mainButtonListGap');
   saveButton = createButton(container,'', 'save text', handleSaveButton);
   clipboardButton = createButton(container, '', 'copy to clipboard',
@@ -70,7 +67,7 @@ function createTheButtonList(parent) {
   createDiv(container, 'mainButtonListGap');
   clearButton = createButton(container, '', 'clear', handleClearButton);
 
-  // disableAllButtons();
+  disableAllButtons();
   return container;
 }
 
@@ -100,12 +97,6 @@ function handleLoadFileButton(e) {
 }
 
 
-function handleLowerCaseUrlsButton() {
-  let text = htmlToText(textCard.innerHTML);
-  textCard.innerHTML = fixUrls(text);
-}
-
-
 async function handleSaveButton(e) {
   let text = htmlToText(textCard.innerHTML);
 
@@ -131,7 +122,7 @@ async function handleClipboardButton(e) {
 
 function handleClearButton(e) {
   textCard.innerHTML = DEFAULT_MSG;
-  // setLoadActive();
+  setLoadActive();
   setSelectionToEnd();
 }
 
@@ -147,7 +138,7 @@ function handleLoadFile(e) {
   const reader = new FileReader();
   reader.onload = (e) => {
     textCard.innerHTML = e.target.result;
-    // setProcessActive();
+    setSaveActive();
   };
 
   reader.readAsText(file);
@@ -214,13 +205,10 @@ function setSelectionToEnd() {
 
 function handlePaste(e) {
   e.preventDefault();
-  if (!allowPasteFlag) {
-    return;
-  }
 
   let text = (e.clipboardData || window.clipboardDats).getData('text');
   textCard.innerHTML = text;
-  setProcessActive();
+  setSaveActive();
 }
 
 
@@ -289,24 +277,25 @@ function replaceWithCapitalizedLetter(text, index) {
 }
 
 
-function fixUrls(textIn) {   // find urls and lower case them
-  const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
-  let wordList = [];
-  let letterList = [];
-  for (let i = 0, letterCount = textIn.length; i < letterCount; ++i) {
-    let letter = textIn.charAt(i);
-    letterList.push(letter);
-    if (whiteSpaceArray.includes(letter)) {
-      let word = letterList.join('');
-      let checkForUrl = word.split('.');
-      if (checkForUrl.length === 3) {
-        word = '<div class=highlight2>' + word.toLowerCase() + '</div>';
-      }
-      // console.log('word', word, letterList.length);
-      wordList.push(word);
-      letterList = [];
-    }
-  }
+function setLoadActive() {
+  disableAllButtons();
+  loadButton.enable();
+}
 
-  return wordList.join('');
+
+function setSaveActive() {
+  disableAllButtons();
+  capitalizeButton.enable();
+  saveButton.enable();
+  clipboardButton.enable();
+  clearButton.enable();
+}
+
+
+function disableAllButtons() {
+  loadButton.disable();
+  capitalizeButton.disable();
+  saveButton.disable();
+  clipboardButton.disable();
+  clearButton.disable();
 }
