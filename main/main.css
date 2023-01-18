@@ -6,16 +6,6 @@
   --fgColor:             var(--darkGreen);
   --highlightColor:      rgb(0, 240, 150);
   --scrollWidth:         1.25rem;
-  --toggleButtonOnColor: var(--buttonBgColor);
-  --toggleButtonOnColor: var(--darkGreen);
-}
-
-.toggleButton {
-  background: var(--darkGreen);
-}
-
-.toggleButton:hover {
-  background: var(--lightGreen3);
 }
 
 @keyframes rotateDownAnim {
@@ -99,7 +89,8 @@ ol {
   margin-left: 0.5rem;
 }
 
-.mainHeaderStatusBadge {
+.mainAboutButton {
+  background: rgb(255, 150, 0);
   height: 2rem;
   margin-left: 2rem;
   margin-top: 0.4rem;
@@ -142,7 +133,7 @@ ol {
 }
 
 .mainButtonListGap {
-  height: 0.5rem;
+  height: 2rem;
 }
 
 .mainButtonSubListContainer {
@@ -225,4 +216,25 @@ ol {
 
 .mainTextCardOuterContainer::-webkit-scrollbar-track-piece {
   /* background: red; */
+}
+
+.toggleButton {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: black;
+}
+
+.toggleButton:hover {
+  background-color: rgb(240, 240, 240);
+  border: none;
+  box-shadow: none;
+  color: black;
+}
+
+.toggleButtonOn {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: black;
 }

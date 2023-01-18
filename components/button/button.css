@@ -1,14 +1,15 @@
 /** button.css **/
 
 :root {
-  --buttonBgColor:       var(--lightBlue);
-  --buttonBgColor:       var(--blue2);
-  --buttonFgColor:       var(--almostWhite);
-  --buttonHoverBgColor:  var(--blue1);
-  --buttonHoverFgColor:  var(--buttonFgColor);
-  --buttonHeight:        2rem;
-  --buttonWidth:         6rem;
-  --toggleButtonOnColor: var(--darkGreen);
+  --buttonBgColor:            var(--lightBlue);
+  --buttonBgColor:            var(--blue2);
+  --buttonFgColor:            var(--almostWhite);
+  --buttonHoverBgColor:       var(--blue1);
+  --buttonHoverFgColor:       var(--buttonFgColor);
+  --buttonHeight:             2rem;
+  --buttonWidth:              6rem;
+  --toggleButtonOnColor:      var(--darkGreen);
+  --toggleButtonOnHoverColor: var(--lightGreen3);
 }
 
 .button,
@@ -74,6 +75,10 @@
 
 .toggleButton {
   justify-content: flex-start;
+}
+
+.toggleButton:hover {
+  background: var(--toggleButtonOnHoverColor);
 }
 
 .toggleButtonOn {
