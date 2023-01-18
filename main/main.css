@@ -91,9 +91,15 @@ ol {
 
 .mainAboutButton {
   background: rgb(255, 150, 0);
+  background: var(--darkGreen);
   height: 2rem;
   margin-left: 2rem;
   margin-top: 0.4rem;
+}
+
+
+.mainAboutButton:hover {
+  background: var(--green);
 }
 
 
