@@ -1,11 +1,21 @@
 /** fixTranscript/main/main.css **/
 
 :root {
-  --titleAngle:  -5deg;
-  --bgColor:     var(--lightGreen2);
-  --fgColor:     var(--darkGreen);
-  --scrollWidth: 1.25rem;
+  --titleAngle:          -5deg;
+  --bgColor:             var(--lightGreen2);
+  --fgColor:             var(--darkGreen);
+  --highlightColor:      rgb(0, 240, 150);
+  --scrollWidth:         1.25rem;
   --toggleButtonOnColor: var(--buttonBgColor);
+  --toggleButtonOnColor: var(--darkGreen);
+}
+
+.toggleButton {
+  background: var(--darkGreen);
+}
+
+.toggleButton:hover {
+  background: var(--lightGreen3);
 }
 
 @keyframes rotateDownAnim {
@@ -168,15 +178,24 @@ ol {
 
 .mainTextCardContainer {
   color: black;
-  display: flex;
-  flex-direction: row;
   flex-grow: 0;
   flex-shrink: 0;
   height: 100%;
-  justify-content: flex-start;
   width: 100%;
 }
 
+.highlight,
+.highlight2 {
+  background: var(--highlightColor);
+  color: black;
+  display: inline;
+  font-weight: bold;
+  padding: 0.1rem;
+}
+
+.highlight2 {
+  background: yellow;
+}
 
 .mainTextCardOuterContainer::-webkit-scrollbar {
   width: var(--scrollWidth);

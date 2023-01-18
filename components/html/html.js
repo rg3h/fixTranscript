@@ -5,14 +5,16 @@ export {
   appendFirst,           // append the element as the first child of the parent
   createAnchor,          // creates an anchor with an optional class and text
   createBreak,           // creates a <br>
+  createCode,            // creates a <code> with an optional class and text
   createDiv,             // creates a div with an optional class and text
   createElement,         // creates an element (e.g. 'div', 'meta')
   createFileOpener,      // creates input type=file with handler
   createImg,             // creates an image with an optional class and text
-  createPre,             // creates a pre with an optional class and text
+  createPre,             // creates a <pre> with an optional class and text
   getElementById,        // get the html element by id
   getFirstElementByClassName, // find the 1st element with the given className
   getFirstElementByName, // find the 1st element with the given name
+  htmlToText,            // strip out the html and return just the text
 };
 
 
@@ -103,6 +105,15 @@ export {
 }
 
 
+/*export*/ function createCode(parent, opt_classNameOrList, htmlString) {
+  let element = createElement('code', parent, opt_classNameOrList);
+  if (htmlString) {
+    element.innerHTML = htmlString;
+  }
+  return element;
+}
+
+
 /*export*/ function getElementById(id) {
   return document.getElementById(id);
 }
@@ -117,5 +128,9 @@ export {
   return document.getElementsByName(name)[0];
 }
 
+/*export*/ function htmlToText(html){
+  let doc = new DOMParser().parseFromString(html, 'text/html');
+  return doc.body.textContent || "";
+}
 
 /********************* private functions ******************************/

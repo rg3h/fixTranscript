@@ -6,11 +6,7 @@ import {createButton}                   from './button.js';
 import {appendFirst, createDiv}         from '../html/html.js';
 import {BOX_SYMBOL, CHECKED_BOX_SYMBOL} from '../symbols/symbols.js';
 
-export function createToggleButton(parent,
-                                   className,
-                                   labelIn,
-                                   fn,
-                                   toggleOnFlag=true) {
+export function createToggleButton(parent,className,labelIn,fn,setFlag=true) {
   let self, button, checkbox;
   return init();
 
@@ -20,20 +16,19 @@ export function createToggleButton(parent,
     container.classList.add('toggleButton');
     checkbox = createDiv(null, 'toggleButtonCheckBox', BOX_SYMBOL);
     appendFirst(container, checkbox);
-    setToggle(toggleOnFlag);
+    set(setFlag);
 
     return self = {
       disable,
       enable,
       getContainer,
       getLabel,
-      isOn,
+      isSet,
+      set,
       setCallback,
       setLabel,
-      setOff,
-      setOn,
-      setToggle,
       toggle,
+      unset,
     };
   }
 
@@ -55,8 +50,8 @@ export function createToggleButton(parent,
     return button.getLabel();
   }
 
-  /*export*/ function isOn() {
-    return toggleOnFlag;
+  /*export*/ function isSet() {
+    return setFlag;
   }
 
   /*export*/ function setCallback(newFn) {
@@ -69,21 +64,16 @@ export function createToggleButton(parent,
     return self;
   }
 
-  /*export*/ function setOn() {
-    setToggle(true);
+  /*export*/ function unset() {
+    set(false);
     return self;
   }
 
-  /*export*/ function setOff() {
-    setToggle(false);
-    return self;
-  }
-
-  /*export*/ function setToggle(newToggleState) {
-    toggleOnFlag = !!newToggleState;
+  /*export*/ function set(newToggleState=true) {
+    setFlag = !!newToggleState;
     let container = getContainer();
 
-    if (toggleOnFlag) {
+    if (setFlag) {
       checkbox.innerHTML = CHECKED_BOX_SYMBOL;
       container.classList.add('toggleButtonOn');
     } else {
@@ -94,7 +84,7 @@ export function createToggleButton(parent,
   }
 
   /*export*/ function toggle() {
-    setToggle(!toggleOnFlag);
+    set(!setFlag);
     return self;
   }
 

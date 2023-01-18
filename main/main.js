@@ -9,7 +9,8 @@ import {createAnchor,
         createElement,
         createFileOpener,
         createImg,
-        createPre,}             from '../components/html/html.js';
+        createPre,
+        htmlToText}             from '../components/html/html.js';
 import {updateDateOnTheMinute}  from '../components/date/date.js';
 import {getVersion}             from '../components/version/version.js';
 import {SPACE_SYMBOL}           from '../components/symbols/symbols.js';
@@ -70,20 +71,6 @@ function handleAboutButton(e) {
 }
 
 
-function handleClearButton(e) {
-  textCard.innerHTML = DEFAULT_MSG;
-  buttonList.setLoadActive();
-  textCard.setAttribute('contenteditable', true);
-  setSelectionToEnd();
-}
-
-function handleLoadFileButton(e) {
-  let fileEle = createFileOpener({accept:'text/*',
-                                  multiple:false, cb:handleLoadFile});
-  fileEle.click();  // click it for the user
-}
-
-
 function handleLoadFile(e) {
   let fileList = e.target.files;
   const file = fileList[0]; // there should only be one file
@@ -95,34 +82,6 @@ function handleLoadFile(e) {
   };
 
   reader.readAsText(file);
-}
-
-function handleProcessTextButton(e) {
-  textCard.innerHTML = fixText(textCard.innerHTML);
-  buttonList.setSaveActive();
-  textCard.setAttribute('contenteditable', false);
-}
-
-
-async function handleSaveButton(e) {
-  let text = textCard.innerHTML;
-  let a = document.createElement('a');
-  a.href = window.URL.createObjectURL(new Blob([text], {type: 'text/plain'}));
-  a.download = 'results.txt';
-  a.click();
-}
-
-
-async function handleClipboardButton(e) {
-  let text = textCard.innerHTML;
-  // navigator.clipboard.writeText(text);
-  try {
-    await copyToClipboard(text);
-  } catch(error) {
-    alert('there was an error copying to the clipboard', error);
-    return;
-  }
-  alert('Copied the text to the clipboard.');
 }
 
 
@@ -228,33 +187,103 @@ function handleFocusOut(event) {
 }
 
 
-function fixText(textIn) {
+function fixText(textIn, buttonList) {
   let text = textIn;
-  // text = text.toUpperCase();
-  text = fixCaptioning(text);
+
+/*
+  let lowercaseUrlsSet = buttonList.getLowercaseUrlsButton().isSet();
+  if (lowercaseUrlsSet) {
+    text = fixUrls(text);
+  }
+*/
+
+  let capitalizeSet = buttonList.getCapitalizeButton().isSet();
+  if (capitalizeSet) {
+    text = fixCapitalization(text);
+  }
+
   return text;
 }
 
 
-function fixCaptioning(textIn) {
-  const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
-  let strArray = textIn.split('.');
-  for (let i = 0, count = strArray.length; i < count; ++i) {
-    let str = strArray[i];
-    let foundIndex = -1;
-    for (let j = 0, jCount =str.length; j < jCount; ++j) {
-      let letter = str.charAt(j);
-      if (!whiteSpaceArray.includes(letter)) {
-        foundIndex = j;
-        break;
-      }
-    }
-    if (foundIndex > -1) {
-      strArray[i] =  str.substring(0, foundIndex) +
-      str.charAt(foundIndex).toUpperCase() + str.slice(foundIndex+1);
+function fixCapitalization(textIn) {
+  // capitalize the first nonwhitespace character in the whole text
+  let firstCharPos = _findFirstNonWhiteSpace(textIn, 0);
+  textIn = _replaceWithCapitalizedLetter(textIn, firstCharPos);
+
+  const punctuationArray = ['.', '?', '!'];
+  let wordList = [];
+  let letterList = [];
+  for (let i = 0; i < textIn.length; ++i) {
+    let letter = textIn.charAt(i);
+    if (punctuationArray.includes(letter) && i < textIn.length - 1) {
+      let nextLetter = textIn.charAt(i+1);
+      if (isWhiteSpace(nextLetter)) { // space after . we need to capitalize
+        firstCharPos = _findFirstNonWhiteSpace(textIn, i+1);
+        if (firstCharPos < 0) { // we ran to the end, so return
+          return textIn;
+        }
+        textIn = _replaceWithCapitalizedLetter(textIn, firstCharPos);
+        i = firstCharPos;
+      }  // if nextLetter is a whitespace
+    }  // if letter is a period
+  } // for all the letters in textIn
+
+  return textIn;
+}
+
+
+function _findFirstNonWhiteSpace(text, startPos) {
+  let endPos = -1;
+  for (let i=startPos, count=text.length; i<count; ++i) {
+    let letter = text.charAt(i);
+    if (!isWhiteSpace(letter)) {
+      endPos = i;
+      break;
     }
   }
-  return strArray.join('.');
+  return endPos;
+}
+
+function isWhiteSpace(letter) {
+  const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
+  return whiteSpaceArray.includes(letter);
+}
+
+function _replaceWithCapitalizedLetter(text, index) {
+  if (index > text.length - 1) {
+    return text;
+  }
+
+  let letter = text.charAt(index).toUpperCase();
+  return text.substring(0, index) +
+    '<div class=highlight>' + letter + '</div>' +
+    text.substring(index + 1);
+}
+
+
+function fixUrls(textIn) {   // find urls and lower case them
+  const whiteSpaceArray = [' ','\f','\n','\r','\t','\v'];
+  let wordList = [];
+  let letterList = [];
+  for (let i = 0, letterCount = textIn.length; i < letterCount; ++i) {
+    let letter = textIn.charAt(i);
+    letterList.push(letter);
+    if (whiteSpaceArray.includes(letter)) {
+      let word = letterList.join('');
+      console.log(word, i);
+      let checkForUrl = word.split('.');
+      if (checkForUrl.length === 3) {
+        console.log('url', word);
+        word = '<div class=highlight2>' + word.toLowerCase() + '</div>';
+      }
+      // console.log('word', word, letterList.length);
+      wordList.push(word);
+      letterList = [];
+    }
+  }
+
+  return wordList.join('');
 }
 
 
@@ -271,28 +300,30 @@ function createTheButtonList(parent) {
     createButton(container, '', 'about', handleAboutButton);
 
     createDiv(container, 'mainButtonListGap');
-    loadButton = createButton(container, '', 'load', handleLoadFileButton);
+    loadButton = createButton(container, '', 'load', _handleLoadFileButton);
 
     createDiv(container, 'mainButtonListGap');
     capitalizeButton = createToggleButton(container, '', 'capitalize',
-                                          handleCapitalizeButton, true);
+                                          _handleCapitalizeButton, true);
     lowercaseUrlsButton = createToggleButton(container, '', 'lowercase urls',
-                                             handleLowercaseUrlsButton, true);
+                                             _handleLowercaseUrlsButton, true);
     processButton = createButton(container,'', 'process text',
-                                 handleProcessTextButton);
+                                 _handleProcessButton);
 
     createDiv(container, 'mainButtonListGap');
-    saveButton = createButton(container, '', 'save', handleSaveButton);
+    saveButton = createButton(container, '', 'save', _handleSaveButton);
     clipboardButton = createButton(container, '', 'copy to clipboard',
-                                   handleClipboardButton);
+                                   _handleClipboardButton);
 
     createDiv(container, 'mainButtonListGap');
-    clearButton = createButton(container, '', 'clear', handleClearButton);
+    clearButton = createButton(container, '', 'clear', _handleClearButton);
 
     _disableAllButtons();
 
     return self = {
       getContainer,
+      getCapitalizeButton,
+      getLowercaseUrlsButton,
       setLoadActive,
       setProcessActive,
       setSaveActive,
@@ -300,19 +331,20 @@ function createTheButtonList(parent) {
   }
 
 
-  /*export*/ function handleCapitalizeButton() {
-    capitalizeButton.toggle();
-  }
-
-
-  /*export*/ function handleLowercaseUrlsButton() {
-    lowercaseUrlsButton.toggle();
-  }
-
-
   /*export*/ function getContainer() {
     return container;
   }
+
+
+  /*export*/ function getCapitalizeButton() {
+    return capitalizeButton;
+  }
+
+
+  /*export*/ function getLowercaseUrlsButton() {
+    return lowercaseUrlsButton;
+  }
+
 
   /*export*/ function setLoadActive() {
     _disableAllButtons();
@@ -335,8 +367,63 @@ function createTheButtonList(parent) {
     clearButton.enable();
   }
 
-
   /******************** private functions *****************************/
+  /*private*/ function _handleCapitalizeButton() {
+    capitalizeButton.toggle();
+  }
+
+
+  /*private*/ function _handleLoadFileButton(e) {
+  let fileEle = createFileOpener({accept:'text/*',
+                                  multiple:false, cb:handleLoadFile});
+    fileEle.click();  // click it for the user
+  }
+
+
+  /*private*/ function _handleLowercaseUrlsButton() {
+    lowercaseUrlsButton.toggle();
+  }
+
+
+  /*private*/ function _handleProcessButton(e) {
+    textCard.innerHTML = fixText(textCard.innerHTML, self);
+    setSaveActive();
+    textCard.setAttribute('contenteditable', false);
+  }
+
+
+  /*private*/ async function _handleSaveButton(e) {
+    let text = htmlToText(textCard.innerHTML);
+    console.log('saving plain text', text);
+
+    let a = document.createElement('a');
+    a.href = window.URL.createObjectURL(new Blob([text], {type: 'text/plain'}));
+    a.download = 'results.txt';
+    a.click();
+  }
+
+
+  /*private*/ async function _handleClipboardButton(e) {
+    let text = htmlToText(textCard.innerHTML);
+    // navigator.clipboard.writeText(text);
+    try {
+      await copyToClipboard(text);
+    } catch(error) {
+      alert('there was an error copying to the clipboard', error);
+      return;
+    }
+    alert('Copied the text to the clipboard.');
+  }
+
+
+  /*private*/ function _handleClearButton(e) {
+    textCard.innerHTML = DEFAULT_MSG;
+    buttonList.setLoadActive();
+    textCard.setAttribute('contenteditable', true);
+    setSelectionToEnd();
+  }
+
+
   /*private*/ function _disableAllButtons() {
     allowPasteFlag = false;
     loadButton.disable();
@@ -348,6 +435,4 @@ function createTheButtonList(parent) {
     clearButton.disable();
     return self;
   }
-
-  return container;
 }
