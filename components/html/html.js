@@ -129,6 +129,8 @@ export {
 }
 
 /*export*/ function htmlToText(html){
+//  html = html.replaceAll('<br>', '\n');
+  html = html.replaceAll('<div>', '\n<div>');
   let doc = new DOMParser().parseFromString(html, 'text/html');
   return doc.body.textContent || "";
 }
