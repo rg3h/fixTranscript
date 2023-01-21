@@ -76,6 +76,23 @@ ol {
   box-shadow: none;
 }
 
+.headerContainer {
+  height: 5rem;
+}
+
+.headerLeftContainer {
+  width: 80%;
+}
+
+.headerMiddleContainer {
+  display: none;
+}
+
+.headerRightContainer {
+  width: 20%;
+}
+
+
 .mainHeaderTitle {
   animation: rotateDownAnim 0.5s ease-in-out 2s forwards;
   font-family: lobsterTwo, notoSansExtraLight, arial;
@@ -89,11 +106,29 @@ ol {
   margin-left: 0.5rem;
 }
 
+.mainDescriptionContainer {
+  font-size: 0.9rem;
+  margin-left: 2rem;
+}
+
+@media screen and (max-width: 900px) {
+  div.mainDescriptionContainer { display: none; }
+  div.headerLeftContainer { width: 70%; }
+  div.headerRightContainer { width: 30%}
+}
+
+@media screen and (max-width: 600px) {
+  div.mainAboutButton { display: none; }
+  img.mainImageLink { display: none; }
+  div.headerLeftContainer { width: 60%; }
+  div.headerRightContainer { width: 40%}
+}
+
 .mainAboutButton {
   background: rgb(255, 150, 0);
   background: var(--darkGreen);
   height: 2rem;
-  margin-left: 2rem;
+  margin-left: 3rem;
   margin-top: 0.4rem;
 }
 

@@ -41,7 +41,10 @@ function createTheHeader(parent) {
   let left = header.getLeftContainer();
   createDiv(left, 'mainHeaderTitle', 'fixTranscript');
   createDiv(left, 'mainHeaderVersion', getVersion());
-
+  let mdc = createDiv(left, 'mainDescriptionContainer');
+  createDiv(mdc, '', 'A simple tool to help fix (YouTube) transcripts.');
+  createDiv(mdc, '', 'Load, edit, run scripts, and save the results.');
+  createDiv(mdc, '', 'Plenty of potential to add new components.');
   createButton(left, 'mainAboutButton', 'about', handleAboutButton);
 
   let anchor = createAnchor(left, '', 'https://github.com/rg3h/fixTranscript');
