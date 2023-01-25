@@ -107,11 +107,13 @@ ol {
 }
 
 .mainDescriptionContainer {
-  font-size: 0.9rem;
+  color: rgb(0, 50, 20);
+  font-family: notoSansLight;
+  font-size: 1.5rem;
   margin-left: 2rem;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1038px) {
   div.mainDescriptionContainer { display: none; }
   div.headerLeftContainer { width: 70%; }
   div.headerRightContainer { width: 30%}

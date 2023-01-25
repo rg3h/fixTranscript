@@ -8,9 +8,11 @@ export {
   createCode,            // creates a <code> with an optional class and text
   createDiv,             // creates a div with an optional class and text
   createElement,         // creates an element (e.g. 'div', 'meta')
+  createInput,           // creates a generic <input> node
   createFileOpener,      // creates input type=file with handler
   createImg,             // creates an image with an optional class and text
   createPre,             // creates a <pre> with an optional class and text
+  createTextInput,       // creates an <input type="text"> node
   getElementById,        // get the html element by id
   getFirstElementByClassName, // find the 1st element with the given className
   getFirstElementByName, // find the 1st element with the given name
@@ -96,10 +98,26 @@ export {
 }
 
 
+/*export*/ function createInput(parent, opt_classNameOrList) {
+  let element = createElement('input', parent, opt_classNameOrList);
+  return element;
+}
+
+
 /*export*/ function createPre(parent, opt_classNameOrList, htmlString) {
   let element = createElement('pre', parent, opt_classNameOrList);
   if (htmlString) {
     element.innerHTML = htmlString;
+  }
+  return element;
+}
+
+
+/*export*/ function createTextInput(parent, opt_classNameOrList, text) {
+  let element = createElement('input', parent, opt_classNameOrList);
+  element.setAttribute('type', 'text');
+  if (text) {
+    element.setAttribute('value', text);
   }
   return element;
 }

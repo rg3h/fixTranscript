@@ -42,9 +42,8 @@ function createTheHeader(parent) {
   createDiv(left, 'mainHeaderTitle', 'fixTranscript');
   createDiv(left, 'mainHeaderVersion', getVersion());
   let mdc = createDiv(left, 'mainDescriptionContainer');
-  createDiv(mdc, '', 'A simple tool to help fix (YouTube) transcripts.');
-  createDiv(mdc, '', 'Load, edit, run scripts, and save the results.');
-  createDiv(mdc, '', 'Plenty of potential to add new components.');
+  createDiv(mdc, '', 'A simple tool to fix transcripts.');
+  createDiv(mdc, '', 'Load, edit, and save the results.');
   createButton(left, 'mainAboutButton', 'about', handleAboutButton);
 
   let anchor = createAnchor(left, '', 'https://github.com/rg3h/fixTranscript');
@@ -216,7 +215,7 @@ function handlePaste(e) {
 
 
 function fixCapitalization(textIn) {
-  textIn = captalizeFirstLetterOfText(textIn);
+  textIn = capitalizeFirstLetterOfText(textIn);
 
   for (let i = 0; i < textIn.length; ++i) {
     let letter = textIn.charAt(i);
@@ -237,7 +236,7 @@ function fixCapitalization(textIn) {
 }
 
 
-function captalizeFirstLetterOfText(text) {
+function capitalizeFirstLetterOfText(text) {
   let firstCharPos = findFirstNonWhiteSpace(text, 0);
   return replaceWithCapitalizedLetter(text, firstCharPos);
 }
@@ -273,10 +272,17 @@ function replaceWithCapitalizedLetter(text, index) {
     return text;
   }
 
-  let letter = text.charAt(index).toUpperCase();
-  return text.substring(0, index) +
-    '<div class=highlight>' + letter + '</div>' +
-    text.substring(index + 1);
+  let letter = text.charAt(index);
+  if (letter >= 'a' && letter <= 'z') {
+    letter = letter.toUpperCase();
+    return text.substring(0,index)+highlight(letter)+text.substring(index+1);
+  }
+  return text;
+}
+
+
+function highlight(str) {
+  return '<div class=highlight>' + str + '</div>';
 }
 
 
