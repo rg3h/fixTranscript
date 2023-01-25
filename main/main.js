@@ -39,14 +39,16 @@ async function main() {
 function createTheHeader(parent) {
   let header = createHeader({parent:parent, date:'MMMM DTH, YYYY HH:NN AMPM'});
   let left = header.getLeftContainer();
-  createDiv(left, 'mainHeaderTitle', 'fixTranscript');
-  createDiv(left, 'mainHeaderVersion', getVersion());
+  let title = createDiv(left, 'mainHeaderTitle', 'fixTranscript');
+  createDiv(title, 'mainHeaderVersion', getVersion());
   let mdc = createDiv(left, 'mainDescriptionContainer');
-  createDiv(mdc, '', 'A simple tool to fix transcripts.');
+  createDiv(mdc, '', 'Fix (YouTube) transcripts.');
   createDiv(mdc, '', 'Load, edit, and save the results.');
-  createButton(left, 'mainAboutButton', 'about', handleAboutButton);
 
-  let anchor = createAnchor(left, '', 'https://github.com/rg3h/fixTranscript');
+  let bl = createDiv(left, 'mainHeaderButtonList');
+  createButton(bl, 'mainAboutButton', 'about', handleAboutButton);
+
+  let anchor = createAnchor(bl, '', 'https://github.com/rg3h/fixTranscript');
   createImg(anchor, 'mainImageLink', './assets/images/github.png');
 
   return header;
@@ -115,10 +117,10 @@ async function handleClipboardButton(e) {
   try {
     await copyToClipboard(text);
   } catch(error) {
-    alert('there was an error copying to the clipboard', error);
+    alert('Unable to copy to the clipboard', error);
     return;
   }
-  alert('Copied the text to the clipboard.');
+  alert('Successfully copied the text to the clipboard.');
 }
 
 
@@ -148,52 +150,22 @@ function handleLoadFile(e) {
 
 
 async function copyToClipboard(text) {
-  return new Promise((resolve, reject) => {
-    if (typeof navigator !== 'undefined' &&
-        typeof navigator.clipboard !== 'undefined' &&
-        navigator.permissions !== 'undefined') {
-      const type = 'text/plain';
-      const blob = new Blob([text], { type });
-      const data = [new ClipboardItem({ [type]: blob })];
-      navigator.permissions.query({name: 'clipboard-write'})
-        .then((permission) => {
-          if (permission.state === 'granted' || permission.state === 'prompt') {
-            navigator.clipboard.write(data).then(resolve, reject).catch(reject);
-          }
-          else {
-            reject(new Error('Permission not granted!'));
-          }
-        });
+  if (typeof navigator !== 'undefined' &&
+      typeof navigator.clipboard !== 'undefined' &&
+      navigator.permissions !== 'undefined') {
+    try {
+      // const type = 'text/plain';
+      // const blob = new Blob([text], { type });
+      // const data = [new ClipboardItem({ [type]: blob })];
+      // await navigator.clipboard.writeText(data);
+      await navigator.clipboard.writeText(text);
+      // alert('yay');
+    } catch(error) {
+      // alert('boo');
+      // console.error('Failed to copy to the clipboard', err);
+      reject(error);
     }
-    else if (document.queryCommandSupported &&
-             document.queryCommandSupported('copy')) {
-      let textarea = document.createElement('textarea');
-      textarea.textContent = text;
-      textarea.style.position = 'fixed';
-      textarea.style.width = '2em';
-      textarea.style.height = '2em';
-      textarea.style.padding = 0;
-      textarea.style.border = 'none';
-      textarea.style.outline = 'none';
-      textarea.style.boxShadow = 'none';
-      textarea.style.background = 'transparent';
-      document.body.appendChild(textarea);
-      textarea.focus();
-      textarea.select();
-      try {
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        resolve();
-      }
-      catch (e) {
-        document.body.removeChild(textarea);
-        reject(e);
-      }
-    }
-    else {
-      reject(new Error('clipboard methods note supported by this browser'));
-    }
-  });
+  }
 }
 
 

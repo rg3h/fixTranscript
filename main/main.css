@@ -81,6 +81,7 @@ ol {
 }
 
 .headerLeftContainer {
+  justify-content: space-between;
   width: 80%;
 }
 
@@ -95,6 +96,7 @@ ol {
 
 .mainHeaderTitle {
   animation: rotateDownAnim 0.5s ease-in-out 2s forwards;
+  display: flex;
   font-family: lobsterTwo, notoSansExtraLight, arial;
   font-size: 3rem;
   transform: rotate(var(--titleAngle));
@@ -102,6 +104,7 @@ ol {
 
 .mainHeaderVersion {
   align-self: end;
+  font-family: notoSans, arial;
   font-size: 0.75rem;
   margin-left: 0.5rem;
 }
@@ -113,13 +116,17 @@ ol {
   margin-left: 2rem;
 }
 
-@media screen and (max-width: 1038px) {
+.mainHeaderButtonList {
+  display: flex;
+}
+
+@media screen and (max-width: 940px) {
   div.mainDescriptionContainer { display: none; }
   div.headerLeftContainer { width: 70%; }
   div.headerRightContainer { width: 30%}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 635px) {
   div.mainAboutButton { display: none; }
   img.mainImageLink { display: none; }
   div.headerLeftContainer { width: 60%; }
